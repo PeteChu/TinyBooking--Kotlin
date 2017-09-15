@@ -15,6 +15,9 @@ import kotlinx.android.synthetic.main.fragment_tabbar.view.*
 
 class TabbarFragment: Fragment() {
 
+    lateinit var btnPage1: TextView
+    lateinit var btnPage2: TextView
+    lateinit var btnPage3: TextView
     lateinit var btnPage4: TextView
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -24,20 +27,48 @@ class TabbarFragment: Fragment() {
     }
 
     fun initInstances(rootView: View) {
+        btnPage1 = rootView.page1
+        btnPage2 = rootView.page2
+        btnPage3 = rootView.page3
         btnPage4 = rootView.page4
+
+        btnPage1.setOnClickListener(myOnclick)
+        btnPage2.setOnClickListener(myOnclick)
+        btnPage3.setOnClickListener(myOnclick)
         btnPage4.setOnClickListener(myOnclick)
     }
 
     var myOnclick = View.OnClickListener { v ->
         when(v.id) {
+            R.id.page1 -> goToMainView()
+            R.id.page2 -> goToBookView()
+            R.id.page3 -> goToNotificationView()
             R.id.page4 -> goToProfileView()
         }
+    }
+
+    fun goToMainView() {
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_main_activity, MainFragment.newInstance())
+                .commit()
+
+    }
+
+    fun goToBookView() {
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_main_activity, BookFragment.newInstance())
+                .commit()
+    }
+
+    fun goToNotificationView() {
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_main_activity, NotificationFragment.newInstance())
+                .commit()
     }
 
     fun goToProfileView() {
         fragmentManager.beginTransaction()
                 .replace(R.id.content_main_activity, ProfileFragment.newInstance())
-                .addToBackStack(null)
                 .commit()
     }
 

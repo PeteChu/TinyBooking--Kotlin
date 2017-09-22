@@ -15,4 +15,12 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="subHeadFont">
+        <item name="android:padding">5dp</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:textColor">#505050</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

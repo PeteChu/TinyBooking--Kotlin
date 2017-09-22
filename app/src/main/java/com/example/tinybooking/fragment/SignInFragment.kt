@@ -8,8 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.chibatching.kotpref.Kotpref
+import com.chibatching.kotpref.bulk
 import com.example.tinybooking.R
-import com.example.tinybooking.dao.UserData
+import com.example.tinybooking.dao.UserInfo
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -41,6 +43,8 @@ class SignInFragment : Fragment() {
     }
 
     fun initInstances(rootView: View) {
+
+        Kotpref.init(context)
 
         mAuth = FirebaseAuth.getInstance()
 
@@ -125,7 +129,13 @@ class SignInFragment : Fragment() {
 
         if (user != null) {
             Toast.makeText(activity, user.displayName, Toast.LENGTH_LONG).show()
-            UserData.setUserData(user)
+
+            UserInfo.bulk {
+                UserInfo.userDisplayName = user.displayName!!
+                UserInfo.userEmail = user.email!!
+                UserInfo.userId = user.uid
+                UserInfo.userPhotoUrl = user.photoUrl!!.toString()
+            }
         }
 
     }

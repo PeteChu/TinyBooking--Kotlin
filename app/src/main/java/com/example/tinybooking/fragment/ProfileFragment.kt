@@ -5,14 +5,24 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
+import android.widget.LinearLayout
+import android.widget.Switch
+import android.widget.Toast
 import com.example.tinybooking.R
+import kotlinx.android.synthetic.main.fragment_profile.view.*
+
 
 /**
  * Created by schecterza on 9/12/2017 AD.
  */
 
 class ProfileFragment: Fragment() {
-
+        lateinit var btnLangague : LinearLayout
+        lateinit var btnHelp: LinearLayout
+        lateinit var btnFeedback : LinearLayout
+        lateinit var btnShare : LinearLayout
+        lateinit var swicthNoti : Switch
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_profile, container, false)
@@ -21,7 +31,28 @@ class ProfileFragment: Fragment() {
     }
 
     fun initInstances(rootView: View) {
+        btnLangague = rootView.set_langague
+        btnHelp = rootView.set_help
+        btnFeedback = rootView.set_feedback
+        btnShare = rootView.set_share
+        swicthNoti = rootView.switch_noti
 
+        btnLangague.setOnClickListener(View.OnClickListener {
+            Toast.makeText(rootView.context, "Change Langague", Toast.LENGTH_SHORT).show()
+        })
+        btnHelp.setOnClickListener(View.OnClickListener {
+            Toast.makeText(rootView.context, "Help", Toast.LENGTH_SHORT).show()
+        })
+        btnFeedback.setOnClickListener(View.OnClickListener {
+            Toast.makeText(rootView.context, "Feedback", Toast.LENGTH_SHORT).show()
+        })
+        btnShare.setOnClickListener(View.OnClickListener {
+            Toast.makeText(rootView.context, "share", Toast.LENGTH_SHORT).show()
+        })
+        swicthNoti.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener {
+            compoundButton, b -> Toast.makeText(rootView.context, "$b", Toast.LENGTH_SHORT).show()
+
+        })
     }
 
     companion object {

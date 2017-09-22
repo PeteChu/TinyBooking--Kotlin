@@ -14,7 +14,8 @@
             ////////พี่ซ่า include ช่องโปรไฟล์มาตรงนี้นะ อิอิ//////
             ///////////////////////
             <LinearLayout
-                android:id="@+id/btn_langague"
+                android:clickable="true"
+                android:id="@+id/set_langague"
                 android:padding="10dp"
                 android:orientation="horizontal"
                 android:background="#1fff"
@@ -60,7 +61,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"></LinearLayout>
             <LinearLayout
-                android:id="@+id/help"
+                android:clickable="true"
+                android:id="@+id/set_help"
                 android:padding="10dp"
                 android:orientation="horizontal"
                 android:background="#1fff"
@@ -86,7 +88,11 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
+                        <ImageView
+                            android:padding="5dp"
+                            android:src="@drawable/chevron_right_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -95,8 +101,11 @@
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"></LinearLayout>
+                android:layout_height="1dp">
+
+            </LinearLayout>
             <LinearLayout
+                android:clickable="true"
                 android:padding="10dp"
                 android:orientation="horizontal"
                 android:background="#1fff"
@@ -136,7 +145,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"></LinearLayout>
             <LinearLayout
-                android:id="@+id/feedback"
+                android:clickable="true"
+                android:id="@+id/set_feedback"
                 android:padding="10dp"
                 android:orientation="horizontal"
                 android:background="#1fff"
@@ -162,7 +172,11 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
+                    <ImageView
+                        android:padding="5dp"
+                        android:src="@drawable/chevron_right_black_24dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -173,7 +187,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"></LinearLayout>
             <LinearLayout
-                android:id="@+id/share"
+                android:clickable="true"
+                android:id="@+id/set_share"
                 android:padding="10dp"
                 android:orientation="horizontal"
                 android:background="#1fff"
@@ -200,7 +215,11 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
+                    <ImageView
+                        android:padding="5dp"
+                        android:src="@drawable/chevron_right_black_24dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </LinearLayout>

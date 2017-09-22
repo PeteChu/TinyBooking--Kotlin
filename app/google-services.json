@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "925833495283",
+    "firebase_url": "https://tinybooking-186d8.firebaseio.com",
+    "project_id": "tinybooking-186d8",
+    "storage_bucket": "tinybooking-186d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925833495283:android:ba8c1fca25628ff3",
+        "android_client_info": {
+          "package_name": "com.example.tinybooking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925833495283-0o74jhtnvrub7qapgjcirqas19qn3gfs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tinybooking",
+            "certificate_hash": "c0e2681377c71ac598f4727d359607b59c7445b5"
+          }
+        },
+        {
+          "client_id": "925833495283-oc18eo5vvrka8ovghd28hrpqrqpvfd50.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8A3IYKSp5z3EosQnfuNebNEeK0l7UUvc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925833495283-oc18eo5vvrka8ovghd28hrpqrqpvfd50.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

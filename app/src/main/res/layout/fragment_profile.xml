@@ -3,217 +3,319 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            ////////////////////////
-            ////////พี่ซ่า include ช่องโปรไฟล์มาตรงนี้นะ อิอิ//////
-            ///////////////////////
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
             <LinearLayout
-                android:id="@+id/btn_langague"
-                android:padding="10dp"
-                android:orientation="horizontal"
-                android:background="#1fff"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-             <LinearLayout
-                 android:gravity="start||center"
-                 android:layout_weight="1"
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent">
-                 <TextView
-                     android:padding="5dp"
-                     android:textColor="#505050"
-                     android:textSize="20sp"
-                     android:textStyle="bold"
-                     android:paddingStart="10dp"
-                     android:text="Langague"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content" />
-             </LinearLayout>
-                <LinearLayout
-                    android:gravity="center||end"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/textView_user_name"
                     android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:padding="5dp"
+                    android:paddingStart="10dp"
+                    android:text="John Doe"
+                    android:textColor="#505050"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btn_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#1fff"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="start|center"
+                    android:orientation="horizontal">
+
                     <TextView
-                        android:id="@+id/langague"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:text="Language"
                         android:textColor="#505050"
                         android:textSize="20sp"
-                        android:textStyle="bold"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/btn_change_language"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
                         android:paddingEnd="10dp"
                         android:text="ไทย"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:textColor="#505050"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </LinearLayout>
+
+            <!-- Line divider setting button -->
             <LinearLayout
-                android:background="#909090"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"></LinearLayout>
+                android:background="#909090"></LinearLayout>
+
             <LinearLayout
-                android:id="@+id/help"
-                android:padding="10dp"
-                android:orientation="horizontal"
-                android:background="#1fff"
+                android:id="@+id/btn_help"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#1fff"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
                 <LinearLayout
-                    android:gravity="start||center"
-                    android:layout_weight="1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="start|center">
+
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:padding="5dp"
-                        android:textColor="#505050"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
                         android:paddingStart="10dp"
                         android:text="Help"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:gravity="center||end"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
+                        android:textColor="#505050"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </LinearLayout>
+
             <LinearLayout
-                android:background="#909090"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"></LinearLayout>
+                android:background="#909090"></LinearLayout>
+
             <LinearLayout
-                android:padding="10dp"
-                android:orientation="horizontal"
-                android:background="#1fff"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#1fff"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
                 <LinearLayout
-                    android:gravity="start||center"
-                    android:layout_weight="1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="start|center">
+
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:padding="5dp"
-                        android:textColor="#505050"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
                         android:paddingStart="10dp"
                         android:text="Notification"
+                        android:textColor="#505050"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <Switch
+                        android:id="@+id/switch_toggle_notification"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:gravity="center||end"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                <Switch
-                    android:id="@+id/switch_noti"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+
                 </LinearLayout>
 
             </LinearLayout>
+
+            <!-- Line divider setting button -->
             <LinearLayout
-                android:background="#909090"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"></LinearLayout>
+                android:background="#909090">
+
+            </LinearLayout>
+
             <LinearLayout
-                android:id="@+id/feedback"
-                android:padding="10dp"
-                android:orientation="horizontal"
-                android:background="#1fff"
+                android:id="@+id/btn_feedback"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#1fff"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
                 <LinearLayout
-                    android:gravity="start||center"
-                    android:layout_weight="1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="start|center">
+
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:padding="5dp"
-                        android:textColor="#505050"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
                         android:paddingStart="10dp"
                         android:text="Feedback"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:gravity="center||end"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:background="#909090"
-                android:layout_marginEnd="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"></LinearLayout>
-            <LinearLayout
-                android:id="@+id/share"
-                android:padding="10dp"
-                android:orientation="horizontal"
-                android:background="#1fff"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-
-                    android:gravity="start||center"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:padding="5dp"
                         android:textColor="#505050"
                         android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:paddingStart="10dp"
-                        android:text="Share"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:gravity="center||end"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </LinearLayout>
+
+            <!-- Line divider setting button -->
             <LinearLayout
-                android:background="#909090"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
+                android:background="#909090"></LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btn_share"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"></LinearLayout>
+                android:layout_height="wrap_content"
+                android:background="#1fff"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="start|center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:text="Share"
+                        android:textColor="#505050"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Line divider setting button -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:background="#909090">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btn_log_out"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#1fff"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="start|center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:text="Log out"
+                        android:textColor="#505050"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Line divider setting button -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:background="#909090">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btn_log_in"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="start|center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:text="Log in"
+                        android:textColor="#505050"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Line divider setting button -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:background="#909090">
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
     </ScrollView>
-
 
 
 </LinearLayout>

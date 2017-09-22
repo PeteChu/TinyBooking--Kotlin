@@ -5,10 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
-import android.widget.LinearLayout
-import android.widget.Switch
-import android.widget.Toast
+import android.widget.*
 import com.example.tinybooking.R
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 
@@ -23,6 +20,7 @@ class ProfileFragment: Fragment() {
         lateinit var btnFeedback : LinearLayout
         lateinit var btnShare : LinearLayout
         lateinit var swicthNoti : Switch
+        lateinit var tvLangague : TextView
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_profile, container, false)
@@ -36,9 +34,10 @@ class ProfileFragment: Fragment() {
         btnFeedback = rootView.set_feedback
         btnShare = rootView.set_share
         swicthNoti = rootView.switch_noti
+        tvLangague = rootView.langague
 
         btnLangague.setOnClickListener(View.OnClickListener {
-            Toast.makeText(rootView.context, "Change Langague", Toast.LENGTH_SHORT).show()
+           tvLangague.text = if(tvLangague.text.equals("English")) "ไทย" else "English"
         })
         btnHelp.setOnClickListener(View.OnClickListener {
             Toast.makeText(rootView.context, "Help", Toast.LENGTH_SHORT).show()

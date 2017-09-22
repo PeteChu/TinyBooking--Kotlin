@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/item_noti"
+        android:background="@drawable/ball"
+        android:elevation="4dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/noti_banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <LinearLayout
+                android:background="#90404040"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:gravity="start"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
 
+                        android:layout_marginStart="5dp"
+                        android:textColor="#eeeeee"
+                        android:text="ร้าน : บอลนะจร๊ะ"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+                <LinearLayout
+                    android:gravity="end"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+
+                        android:layout_marginEnd="5dp"
+                        android:textColor="#eeeeee"
+                        android:text="20-09-2017"
+                        android:gravity="end"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
 </LinearLayout>

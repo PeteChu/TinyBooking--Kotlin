@@ -306,11 +306,7 @@
                 android:background="#909090">
 
             </LinearLayout>
-
-
         </LinearLayout>
-
     </ScrollView>
-
 
 </LinearLayout>

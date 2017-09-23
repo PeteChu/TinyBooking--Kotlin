@@ -5,7 +5,7 @@
     android:orientation="vertical">
         <LinearLayout
             android:orientation="vertical"
-            android:background="#eeeeee"
+            android:background="#ececec"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
                 <android.support.v7.widget.RecyclerView

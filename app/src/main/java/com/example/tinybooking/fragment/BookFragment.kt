@@ -1,7 +1,9 @@
 package com.example.tinybooking.fragment
 
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.LinearSnapHelper
 import android.support.v7.widget.RecyclerView
@@ -32,6 +34,9 @@ class BookFragment : Fragment() {
     }
 
     fun initInstances(rootView: View) {
+
+        (activity as AppCompatActivity).supportActionBar!!.hide()
+
         mRecyclerView = rootView.list_book
         mRecyclerView!!.setHasFixedSize(true)
 

@@ -2,6 +2,7 @@ package com.example.tinybooking.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -27,9 +28,10 @@ class NotificationFragment : Fragment() {
     }
 
     fun initInstances(rootView: View) {
-            list = rootView.noti_list
-            list.layoutManager = LinearLayoutManager(context)
-            list.adapter = adapterNoti
+        (activity as AppCompatActivity).supportActionBar!!.hide()
+        list = rootView.noti_list
+        list.layoutManager = LinearLayoutManager(context)
+        list.adapter = adapterNoti
     }
 
     companion object {

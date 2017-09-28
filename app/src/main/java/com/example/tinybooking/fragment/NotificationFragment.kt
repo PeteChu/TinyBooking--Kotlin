@@ -44,7 +44,7 @@ class NotificationFragment : Fragment() {
             val handler = Handler()
             handler.postDelayed(Runnable {
                 rf.isRefreshing = false
-            }, 5000)
+            }, 3000)
         })
     }
 

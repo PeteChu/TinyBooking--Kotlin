@@ -1,11 +1,14 @@
 package com.example.tinybooking.fragment
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.v4.app.Fragment
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
 
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_notification.view.*
  */
 
 class NotificationFragment : Fragment() {
+    lateinit var rf : SwipeRefreshLayout
     lateinit var list : RecyclerView
     var adapterNoti : NotificationListAdapter = NotificationListAdapter()
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -28,10 +32,20 @@ class NotificationFragment : Fragment() {
     }
 
     fun initInstances(rootView: View) {
-        (activity as AppCompatActivity).supportActionBar!!.hide()
+
+        (activity as AppCompatActivity).supportActionBar!!.setTitle("Messages")
+        (activity as AppCompatActivity).supportActionBar!!.show()
+        rf = rootView.nofi_refresh
         list = rootView.noti_list
         list.layoutManager = LinearLayoutManager(context)
         list.adapter = adapterNoti
+        rf.setColorSchemeResources(R.color.colorPrimary)
+        rf.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener {
+            val handler = Handler()
+            handler.postDelayed(Runnable {
+                rf.isRefreshing = false
+            }, 5000)
+        })
     }
 
     companion object {

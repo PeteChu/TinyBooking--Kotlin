@@ -34,8 +34,8 @@ class BookFragment : Fragment() {
     }
 
     fun initInstances(rootView: View) {
-
-        (activity as AppCompatActivity).supportActionBar!!.hide()
+        (activity as AppCompatActivity).supportActionBar!!.setTitle("My Book")
+        (activity as AppCompatActivity).supportActionBar!!.show()
 
         mRecyclerView = rootView.list_book
         mRecyclerView!!.setHasFixedSize(true)

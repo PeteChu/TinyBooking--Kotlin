@@ -26,7 +26,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ball" />
+                    android:src="@drawable/person" />
             </FrameLayout>
 
             <LinearLayout
@@ -37,6 +37,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textColor="@color/blue"
                     style="@style/subHeadFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -46,31 +47,65 @@
                 <!-- Line divider setting button -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="10dp"
-                    android:background="#909090" />
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorLine" />
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
                 </LinearLayout>
-                <TextView
-                    style="@style/subHeadFont"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Date : Today" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    style="@style/subHeadFont"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Time : 10.00-11.00" />
+                    <TextView
+                        style="@style/subHeadFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Date :" />
+                    <TextView
+                        android:textSize="18sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Today" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        style="@style/subHeadFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Time :" />
+                    <TextView
 
-                <TextView
-                    style="@style/subHeadFont"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Reminder" />
+                        android:textSize="18sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="10.00-11.00" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        style="@style/subHeadFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Reminder:" />
+                    <Switch
+                        android:id="@+id/book_switch"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
 
 
             </LinearLayout>

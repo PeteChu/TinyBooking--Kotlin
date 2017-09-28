@@ -35,6 +35,7 @@ class MainFragment : Fragment() {
     }
 
     fun initInstances(rootView: View) {
+        (activity as AppCompatActivity).supportActionBar!!.setTitle("Tiny Booking")
         (activity as AppCompatActivity).supportActionBar!!.show()
 
         mRecyclerView = rootView.list_favorite_item

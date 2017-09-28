@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.tinybooking.R
 import kotlinx.android.synthetic.main.fragment_tabbar.view.*
@@ -15,10 +16,10 @@ import kotlinx.android.synthetic.main.fragment_tabbar.view.*
 
 class TabbarFragment: Fragment() {
 
-    lateinit var btnPage1: TextView
-    lateinit var btnPage2: TextView
-    lateinit var btnPage3: TextView
-    lateinit var btnPage4: TextView
+    lateinit var btnPage1: LinearLayout
+    lateinit var btnPage2: LinearLayout
+    lateinit var btnPage3: LinearLayout
+    lateinit var btnPage4: LinearLayout
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootView = inflater!!.inflate(R.layout.fragment_tabbar, container, false)

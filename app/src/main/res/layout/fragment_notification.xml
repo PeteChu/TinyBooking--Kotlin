@@ -3,21 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-        <LinearLayout
-            android:orientation="vertical"
-            android:background="#ececec"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:background="@color/colorPrimary"
+            android:id="@+id/nofi_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/noti_list"
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="#ececec"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/noti_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                </android.support.v7.widget.RecyclerView>
+                        </android.support.v7.widget.RecyclerView>
 
 
 
-        </LinearLayout>
+                </LinearLayout>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
 
 
 </LinearLayout>

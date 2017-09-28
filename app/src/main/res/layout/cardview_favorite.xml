@@ -23,11 +23,13 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
+
                 <ImageView
+                    android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ball" />
+                    android:src="@drawable/person" />
             </FrameLayout>
 
             <LinearLayout
@@ -38,6 +40,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textColor="@color/blue"
                     style="@style/subHeadFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -47,9 +50,10 @@
                 <!-- Line divider setting button -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="10dp"
-                    android:background="#909090" />
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorLine" />
 
                 <TextView
                     style="@style/subHeadFont"

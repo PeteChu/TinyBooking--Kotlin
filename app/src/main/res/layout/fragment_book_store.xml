@@ -41,30 +41,106 @@
 
             <!-- store info -->
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_margin="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
 
                 <!-- store title-->
                 <TextView
-                    android:text="สนามฟุตบอล"
                     style="@style/subHeadFont"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="สนามฟุตบอล" />
 
                 <TextView
                     style="@style/subHeadFont"
-                    android:text="เวลาเปิด - ปิด : 10.00 - 24.00"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="เวลาเปิด - ปิด : 10.00 - 24.00" />
+
+                <TextView
+                    style="@style/subHeadFont"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="โทร : 0890000001" />
+
+                <TextView
+                    style="@style/subHeadFont"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="E-mail : asdf@hotmail.com" />
 
             </LinearLayout>
 
             <!-- book option -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/subHeadFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="วันที่ต้องการจอง" />
+
+                    <TextView
+                        style="@style/subHeadFont"
+                        android:text="30/09/2560"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="จำนวนชั่วโมง"
+                        style="@style/subHeadFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:gravity="center"
+                        style="@style/subHeadFont"
+                        android:text="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/subHeadFont"
+                        android:text="เลือกเวลาที่ต้องการจอง"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -74,13 +150,13 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:textColor="@android:color/white"
-                    android:background="@color/colorPrimary"
-                    android:gravity="center"
                     style="@style/subHeadFont"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="Book" />
+                    android:background="@color/colorPrimary"
+                    android:gravity="center"
+                    android:text="Book"
+                    android:textColor="@android:color/white" />
 
             </LinearLayout>
 

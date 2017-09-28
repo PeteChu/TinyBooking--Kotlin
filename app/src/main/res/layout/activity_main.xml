@@ -8,6 +8,11 @@
     tools:context="com.example.tinybooking.MainActivity">
 
     <FrameLayout
+        android:id="@+id/toolbar_container_main_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></FrameLayout>
+
+    <FrameLayout
         android:id="@+id/content_main_activity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

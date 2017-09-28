@@ -60,22 +60,22 @@ class ProfileFragment: Fragment() {
 
     val myOnClick = View.OnClickListener{v ->
         when(v) {
-            v.btn_log_in -> goToSignInView()
-            v.btn_log_out -> signOut()
+//            v.btn_log_in -> goToSignInView()
+//            v.btn_log_out -> signOut()
         }
     }
 
-    private fun goToSignInView() {
-        fragmentManager.beginTransaction()
-                .replace(R.id.content_main_activity, SignInFragment.newInstance())
-                .addToBackStack(null)
-                .commit()
-    }
-
-    private fun signOut() {
-        FirebaseAuth.getInstance().signOut()
-        UserInfo.clear()
-    }
+//    private fun goToSignInView() {
+//        fragmentManager.beginTransaction()
+//                .replace(R.id.content_main_activity, SignInFragment.newInstance())
+//                .addToBackStack(null)
+//                .commit()
+//    }
+//
+//    private fun signOut() {
+//        FirebaseAuth.getInstance().signOut()
+//        UserInfo.clear()
+//    }
 
     private fun updateUser() {
 

@@ -51,59 +51,76 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@color/colorLine" />
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
 
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <TextView
-                        style="@style/subHeadFont"
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Date :" />
-                    <TextView
-                        android:textSize="18sp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Today" />
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        style="@style/subHeadFont"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Time :" />
-                    <TextView
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
-                        android:textSize="18sp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="10.00-11.00" />
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        style="@style/subHeadFont"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Reminder:" />
-                    <Switch
-                        android:id="@+id/book_switch"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_margin="10dp"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
-                </LinearLayout>
+                            <TextView
+                                style="@style/subHeadFont"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Date " />
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:textSize="18sp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Today" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_margin="10dp"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                style="@style/subHeadFont"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Time" />
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:textSize="18sp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="10.00-11.00" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_margin="10dp"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                style="@style/subHeadFont"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Reminder" />
+
+                            <Switch
+                                android:id="@+id/book_switch"
+                                android:layout_marginLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </ScrollView>
 
 
 

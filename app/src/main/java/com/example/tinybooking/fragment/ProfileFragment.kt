@@ -1,5 +1,6 @@
 package com.example.tinybooking.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
@@ -10,7 +11,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.chibatching.kotpref.Kotpref
+import com.example.tinybooking.ProfileActivity
 import com.example.tinybooking.R
+import com.example.tinybooking.SearchActivity
 import com.example.tinybooking.dao.UserInfo
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.common.api.GoogleApiClient
@@ -31,6 +34,8 @@ class ProfileFragment: Fragment() {
 
     lateinit var textViewUserName: TextView
     lateinit var imageViewUserProfile: ImageView
+    lateinit var tvEditprofile : TextView
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_profile, container, false)
@@ -50,6 +55,11 @@ class ProfileFragment: Fragment() {
 
         textViewUserName = rootView.textView_user_name
         imageViewUserProfile = rootView.image_user_profile
+        tvEditprofile = rootView.btn_editprofile
+        tvEditprofile.setOnClickListener(View.OnClickListener {
+            var intent = Intent(context, ProfileActivity::class.java)
+            startActivity(intent)
+        })
 
         var user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
@@ -57,6 +67,7 @@ class ProfileFragment: Fragment() {
         } else {
 
         }
+
 
     }
 

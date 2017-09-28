@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:orientation="vertical">
 
     <ScrollView
@@ -36,7 +38,8 @@
                         android:text="John Doe" />
 
                     <TextView
-                        style="@style/subHeadFont"
+                        android:layout_marginStart="10dp"
+                        android:padding="5dp"
                         android:textSize="16dp"
                         android:textStyle="normal"
                         android:id="@+id/textView"
@@ -66,6 +69,8 @@
                 android:padding="10dp">
 
                 <LinearLayout
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -80,7 +85,7 @@
                         android:padding="5dp"
                         android:paddingStart="10dp"
                         android:text="Language"
-                        android:textColor="#505050"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -91,8 +96,8 @@
                         android:padding="5dp"
                         android:paddingEnd="10dp"
                         android:text="ไทย"
-                        android:textColor="#505050"
-                        android:textSize="20sp"
+
+                        android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -101,10 +106,10 @@
             <!-- Line divider setting button -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
-                android:background="#909090"></LinearLayout>
+                android:background="@color/colorLine"></LinearLayout>
 
             <LinearLayout
                 android:id="@+id/btn_help"
@@ -115,6 +120,8 @@
                 android:padding="10dp">
 
                 <LinearLayout
+                    android:paddingTop="15dp"
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -127,7 +134,7 @@
                         android:padding="5dp"
                         android:paddingStart="10dp"
                         android:text="Help"
-                        android:textColor="#505050"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -136,10 +143,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
-                android:background="#909090"></LinearLayout>
+                android:background="@color/colorLine"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -149,6 +156,8 @@
                 android:padding="10dp">
 
                 <LinearLayout
+                    android:paddingTop="15dp"
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -161,7 +170,7 @@
                         android:padding="5dp"
                         android:paddingStart="10dp"
                         android:text="Notification"
-                        android:textColor="#505050"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -176,10 +185,10 @@
             <!-- Line divider setting button -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
-                android:background="#909090">
+                android:background="@color/colorLine">
 
             </LinearLayout>
 
@@ -192,19 +201,21 @@
                 android:padding="10dp">
 
                 <LinearLayout
+                    android:paddingTop="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="start|center">
 
                     <TextView
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:paddingStart="10dp"
                         android:text="Feedback"
-                        android:textColor="#505050"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -214,12 +225,13 @@
             <!-- Line divider setting button -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
-                android:background="#909090"></LinearLayout>
+                android:background="@color/colorLine"></LinearLayout>
 
             <LinearLayout
+
                 android:id="@+id/btn_share"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -228,6 +240,7 @@
                 android:padding="10dp">
 
                 <LinearLayout
+                    android:paddingTop="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -240,7 +253,7 @@
                         android:padding="5dp"
                         android:paddingStart="10dp"
                         android:text="Share"
-                        android:textColor="#505050"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -250,10 +263,10 @@
             <!-- Line divider setting button -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
-                android:background="#909090">
+                android:background="@color/colorLine">
 
             </LinearLayout>
 
@@ -278,7 +291,7 @@
                         android:padding="5dp"
                         android:paddingStart="10dp"
                         android:text="Log out"
-                        android:textColor="#505050"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -288,10 +301,10 @@
             <!-- Line divider setting button -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
-                android:background="#909090">
+                android:background="@color/colorLine">
 
             </LinearLayout>
 
@@ -317,7 +330,7 @@
                         android:padding="5dp"
                         android:paddingStart="10dp"
                         android:text="Log in"
-                        android:textColor="#505050"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -327,10 +340,10 @@
             <!-- Line divider setting button -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
-                android:background="#909090">
+                android:background="@color/colorLine">
 
             </LinearLayout>
         </LinearLayout>

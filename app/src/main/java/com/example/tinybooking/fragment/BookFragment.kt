@@ -34,7 +34,7 @@ class BookFragment : Fragment() {
     }
 
     fun initInstances(rootView: View) {
-        (activity as AppCompatActivity).supportActionBar!!.setTitle("My Book")
+        (activity as AppCompatActivity).supportActionBar!!.setTitle("My Booking")
         (activity as AppCompatActivity).supportActionBar!!.show()
 
         mRecyclerView = rootView.list_book

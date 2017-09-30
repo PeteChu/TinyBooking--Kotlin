@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">TinyBooking</string>
     <string name="action_search">Search</string>
+
+
+    <string-array name="gender">
+        <item>gender</item>
+        <item>male</item>
+        <item>female</item>
+        <item>orther</item>
+    </string-array>
 </resources>

@@ -5,13 +5,14 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.Toast
 import com.example.tinybooking.R
 
-
-class SetProfileFragment:Fragment(){
+class EditProfileFragment : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootview = inflater!!.inflate(R.layout.fragment_settingprofile, container, false)
+        val rootview = inflater!!.inflate(R.layout.fragment_editprofile, container, false)
         initInstances(rootview)
         return rootview
     }
@@ -20,8 +21,8 @@ class SetProfileFragment:Fragment(){
 
     }
     companion object {
-        fun newInstance(): SetProfileFragment {
-            var fragment = SetProfileFragment()
+        fun newInstance(): EditProfileFragment {
+            var fragment = EditProfileFragment()
             var args = Bundle()
             fragment.arguments = args
 

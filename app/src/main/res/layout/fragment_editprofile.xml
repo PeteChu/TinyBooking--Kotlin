@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <TextView
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="Edit"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_margin="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="name"
+        app:met_baseColor="@color/colorPrimaryDark"
+        app:met_errorColor="@color/red"
+        app:met_primaryColor="@color/colorPrimary"
+        app:met_floatingLabel="normal"
+        />
+    <Spinner
+        android:layout_margin="25dp"
+        android:id="@+id/spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawSelectorOnTop="true"
+        android:entries="@array/gender"
+        />
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_margin="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="email"
+        app:met_baseColor="@color/colorPrimaryDark"
+        app:met_errorColor="@color/red"
+        app:met_primaryColor="@color/colorPrimary"
+        app:met_floatingLabel="normal"
+        />
+   
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_margin="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Birthday"
+        app:met_baseColor="@color/colorPrimaryDark"
+        app:met_errorColor="@color/red"
+        app:met_primaryColor="@color/colorPrimary"
+        app:met_floatingLabel="normal"
+        />
+    <Button
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="save"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

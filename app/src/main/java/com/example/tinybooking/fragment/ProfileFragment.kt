@@ -14,6 +14,7 @@ import com.chibatching.kotpref.Kotpref
 import com.example.tinybooking.ProfileActivity
 import com.example.tinybooking.R
 import com.example.tinybooking.SearchActivity
+import com.example.tinybooking.SignInActivity
 import com.example.tinybooking.dao.UserInfo
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.common.api.GoogleApiClient
@@ -73,17 +74,15 @@ class ProfileFragment: Fragment() {
 
     val myOnClick = View.OnClickListener{v ->
         when(v) {
-//            v.btn_log_in -> goToSignInView()
+            v.btn_log_in -> goToSignInView()
 //            v.btn_log_out -> signOut()
         }
     }
 
-//    private fun goToSignInView() {
-//        fragmentManager.beginTransaction()
-//                .replace(R.id.content_main_activity, SignInFragment.newInstance())
-//                .addToBackStack(null)
-//                .commit()
-//    }
+    private fun goToSignInView() {
+        var intent = Intent(context, SignInActivity::class.java)
+        startActivity(intent)
+    }
 //
 //    private fun signOut() {
 //        FirebaseAuth.getInstance().signOut()
@@ -94,9 +93,6 @@ class ProfileFragment: Fragment() {
 
         val userData = UserInfo
         textViewUserName.text = userData.userDisplayName
-        Picasso.with(context)
-                .load(userData.userPhotoUrl)
-                .into(imageViewUserProfile)
     }
 
 

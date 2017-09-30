@@ -66,7 +66,7 @@ class SearchFragment: Fragment() {
             }
 
             override fun onFailure(call: Call<ListStoreInfo>?, t: Throwable?) {
-                Toast.makeText(activity, t.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, t!!.toString(), Toast.LENGTH_LONG).show()
             }
 
         })

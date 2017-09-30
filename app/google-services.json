@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "925833495283-rek3ostr159lgqiivsd72doaikhd7e9p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tinybooking",
+            "certificate_hash": "7cf72a4b5e1e73675d58bffd6e2d781dd6d0001f"
+          }
+        },
+        {
           "client_id": "925833495283-0o74jhtnvrub7qapgjcirqas19qn3gfs.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

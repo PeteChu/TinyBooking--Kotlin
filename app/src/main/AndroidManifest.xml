@@ -24,7 +24,10 @@
         <activity android:name=".ContentActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ProfileActivity" />
+
         <activity android:name=".EditActivity"></activity>
+        <activity android:name=".SignInActivity"></activity>
+
     </application>
 
 </manifest>

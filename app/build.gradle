@@ -38,11 +38,15 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile 'com.github.applikeysolutions:cosmocalendar:1.0.0'
+    compile 'com.github.ksoichiro:Android-ObservableScrollView:v1.6.0'
+    compile 'com.shawnlin:number-picker:2.4.4'
     testCompile 'junit:junit:4.12'
 }
 repositories {
     mavenCentral()
+    maven {
+        url "https://jitpack.io"
+    }
 }
 
 apply plugin: 'com.google.gms.google-services'

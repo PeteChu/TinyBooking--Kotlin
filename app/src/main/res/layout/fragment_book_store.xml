@@ -1,88 +1,124 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view_image"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <ScrollView
+    <com.github.ksoichiro.android.observablescrollview.ObservableScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <!-- store images -->
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/parallax_image_height"
+                android:scaleType="centerCrop"
+                android:src="@drawable/person" />
+
+            <View
+                android:id="@+id/anchor"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/parallax_image_height"
+                android:minHeight="@dimen/parallax_image_height" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:layout_below="@id/anchor"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin">
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/person" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/poster"
+                        style="@style/subHeadFont"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#E5E5E5"
-                        android:text="ASDF" />
+                        android:layout_below="@id/anchor"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="JK Football" />
 
-                </FrameLayout>
+                </LinearLayout>
 
-            </LinearLayout>
-
-            <!-- store info -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="vertical">
-
-                <!-- store title-->
-                <TextView
-                    style="@style/subHeadFont"
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="สนามฟุตบอล" />
+                    android:layout_height="1dp"
+                    android:background="#E5E5E5"></View>
 
-                <TextView
-                    style="@style/subHeadFont"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="เวลาเปิด - ปิด : 10.00 - 24.00" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <TextView
-                    style="@style/subHeadFont"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="โทร : 0890000001" />
+                    <TextView
+                        style="@style/subHeadFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="เวลาเปิด - ปิด" />
 
-                <TextView
-                    style="@style/subHeadFont"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="E-mail : asdf@hotmail.com" />
+                    <TextView
+                        style="@style/subHeadFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="10.00 : 24.00" />
 
-            </LinearLayout>
+                    <TextView
+                        style="@style/subHeadFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="โทร" />
 
-            <!-- book option -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="vertical">
+                    <TextView
+                        style="@style/subHeadFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="089xxxxxxx" />
+
+                    <TextView
+                        style="@style/subHeadFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="E-mail" />
+
+                    <TextView
+                        style="@style/subHeadFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="asdf@hotmail.com" />
+
+                    <TextView
+                        style="@style/subHeadFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="แผนที่" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:background="@color/colorAccent"></View>
+
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -93,77 +129,48 @@
 
                     <TextView
                         style="@style/subHeadFont"
-                        android:text="30/09/2560"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:text="จำนวนชั่วโมง"
-                        style="@style/subHeadFont"
+                        android:text="15 ตุลาคม 2560"
+                        android:textSize="20sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
                     <TextView
-                        android:gravity="center"
                         style="@style/subHeadFont"
-                        android:text="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="จำนวนชั่วโมง" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    <com.shawnlin.numberpicker.NumberPicker
+                        android:layout_gravity="center"
+                        app:np_max="5"
+                        app:np_orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"></com.shawnlin.numberpicker.NumberPicker>
 
                     <TextView
                         style="@style/subHeadFont"
-                        android:text="เลือกเวลาที่ต้องการจอง"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                    <LinearLayout
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-
-
-                    </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:text="เวลาที่ว่าง" />
 
                 </LinearLayout>
 
 
             </LinearLayout>
 
-            <!-- book button -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        </RelativeLayout>
 
-                <TextView
-                    style="@style/subHeadFont"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@color/colorPrimary"
-                    android:gravity="center"
-                    android:text="Book"
-                    android:textColor="@android:color/white" />
+    </com.github.ksoichiro.android.observablescrollview.ObservableScrollView>
 
-            </LinearLayout>
+    <include layout="@layout/gradient_header" />
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
+        app:theme="@style/Toolbar" />
 
-        </LinearLayout>
-
-    </ScrollView>
-
-
-</LinearLayout>
+</FrameLayout>

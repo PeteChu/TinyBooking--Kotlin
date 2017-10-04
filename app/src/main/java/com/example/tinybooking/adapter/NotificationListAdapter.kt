@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.tinybooking.NotidetailActivity
 import com.example.tinybooking.R
 import kotlinx.android.synthetic.main.item_notification.view.*
 
@@ -42,7 +43,8 @@ class NotificationListAdapter() : RecyclerView.Adapter<NotificationListAdapter.V
         val card = itemView.item_noti
         fun bind(mContext:Context,position: Int){
             card.setOnClickListener(View.OnClickListener {
-                Toast.makeText(mContext,"click $position",Toast.LENGTH_SHORT).show()
+                var intent = Intent(mContext, NotidetailActivity::class.java)
+                mContext.startActivity(intent)
             })
         }
 

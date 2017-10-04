@@ -109,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:textColor="#e0e0e0"
+                android:textColor="#fff"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:gravity="center"

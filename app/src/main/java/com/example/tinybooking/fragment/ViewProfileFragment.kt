@@ -7,14 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.Toast
 import com.example.tinybooking.EditActivity
 import com.example.tinybooking.R
+import com.example.tinybooking.dao.UserInfo
 import kotlinx.android.synthetic.main.fragment_viewprofile.view.*
 
 
-class ViewProfileFragment :Fragment(){
-        lateinit var btnEdit:LinearLayout
+class ViewProfileFragment : Fragment() {
+
+    lateinit var btnEdit: LinearLayout
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootview = inflater!!.inflate(R.layout.fragment_viewprofile, container, false)
         initInstances(rootview)
@@ -23,12 +25,20 @@ class ViewProfileFragment :Fragment(){
 
     fun initInstances(rootview : View){
 
+
         btnEdit = rootview.btn_edit_profile
         btnEdit.setOnClickListener(View.OnClickListener {
             var intent = Intent(context, EditActivity::class.java)
             startActivity(intent)
         })
+
+        var userInfo = UserInfo
+
+        rootview.profile_username.text = userInfo.userDisplayName
+        rootview.profile_email.text = userInfo.userEmail
+
     }
+
     companion object {
         fun newInstance(): ViewProfileFragment {
             var fragment = ViewProfileFragment()

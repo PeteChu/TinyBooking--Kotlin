@@ -172,14 +172,6 @@ class SignInFragment: Fragment(), GoogleApiClient.OnConnectionFailedListener {
 
         }
 
-        var a = user!!.providerData
-
-        for (i in a) {
-            Toast.makeText(context, i.toString(), Toast.LENGTH_LONG).show() 
-        }
-
-
-
     }
 
     override fun onConnectionFailed(connectionResult: ConnectionResult) {

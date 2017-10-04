@@ -106,12 +106,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="แผนที่" />
-
-                    <View
+                    
+                    <com.airbnb.android.airmapview.AirMapView
+                        android:id="@+id/map_view"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:background="@color/colorAccent"></View>
-
+                        android:layout_height="200dp"></com.airbnb.android.airmapview.AirMapView>
 
                 </LinearLayout>
 

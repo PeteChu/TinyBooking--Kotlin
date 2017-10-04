@@ -3,6 +3,7 @@ package com.example.tinybooking
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
+import android.view.View
 
 import com.example.tinybooking.fragment.ViewProfileFragment
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -17,14 +18,14 @@ class ProfileActivity : AppCompatActivity() {
     }
     fun initInstant(){
         toolbar = editprofile_toolbar
+        toolbar.setNavigationOnClickListener{
 
+            onBackPressed()
+        }
         setSupportActionBar(toolbar)
         supportActionBar!!.setTitle("Profile")
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
-
-
-
 
         supportFragmentManager.beginTransaction()
                 .add(R.id.area_profile, ViewProfileFragment.newInstance())

@@ -22,10 +22,11 @@
 
     </LinearLayout>
     <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/edit_name"
         android:layout_margin="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="name"
+        android:hint="Name"
         app:met_baseColor="@color/colorPrimaryDark"
         app:met_errorColor="@color/red"
         app:met_primaryColor="@color/colorPrimary"
@@ -39,22 +40,14 @@
         android:drawSelectorOnTop="true"
         android:entries="@array/gender"
         />
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:layout_margin="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="email"
-        app:met_baseColor="@color/colorPrimaryDark"
-        app:met_errorColor="@color/red"
-        app:met_primaryColor="@color/colorPrimary"
-        app:met_floatingLabel="normal"
-        />
+
 
     <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/edit_phone"
         android:layout_margin="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Birthday"
+        android:hint="Phone"
         app:met_baseColor="@color/colorPrimaryDark"
         app:met_errorColor="@color/red"
         app:met_primaryColor="@color/colorPrimary"

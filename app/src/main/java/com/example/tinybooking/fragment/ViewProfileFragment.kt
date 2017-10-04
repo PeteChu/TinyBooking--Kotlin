@@ -22,6 +22,7 @@ class ViewProfileFragment :Fragment(){
     }
 
     fun initInstances(rootview : View){
+
         btnEdit = rootview.btn_edit_profile
         btnEdit.setOnClickListener(View.OnClickListener {
             var intent = Intent(context, EditActivity::class.java)

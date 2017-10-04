@@ -4,9 +4,9 @@
 
 
     <string-array name="gender">
-        <item>gender</item>
-        <item>male</item>
-        <item>female</item>
-        <item>orther</item>
+        <item>Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Orther</item>
     </string-array>
 </resources>

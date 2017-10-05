@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.TextView
 import com.example.tinybooking.R
 import kotlinx.android.synthetic.main.fragment_tabbar.view.*
 
@@ -69,7 +68,7 @@ class TabbarFragment: Fragment() {
 
     fun goToProfileView() {
         fragmentManager.beginTransaction()
-                .replace(R.id.content_main_activity, ProfileFragment.newInstance())
+                .replace(R.id.content_main_activity, SettingFragment.newInstance())
                 .commit()
     }
 

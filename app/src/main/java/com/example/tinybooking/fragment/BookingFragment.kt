@@ -10,31 +10,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import com.airbnb.android.airmapview.AirMapView
 import com.airbnb.android.airmapview.listeners.OnCameraChangeListener
 import com.airbnb.android.airmapview.listeners.OnCameraMoveListener
 import com.airbnb.android.airmapview.listeners.OnMapClickListener
 import com.airbnb.android.airmapview.listeners.OnMapInitializedListener
 import com.example.tinybooking.R
+import com.github.jhonnyx2012.horizontalpicker.DatePickerListener
+import com.github.jhonnyx2012.horizontalpicker.HorizontalPicker
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollView
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks
 import com.github.ksoichiro.android.observablescrollview.ScrollState
 import com.github.ksoichiro.android.observablescrollview.ScrollUtils
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.fragment_book_store.view.*
+import org.joda.time.DateTime
 
 /**
  * Created by schecterza on 28/9/2017 AD.
  */
 
-class BookingFragment: Fragment(), ObservableScrollViewCallbacks,
-        OnMapClickListener, OnMapInitializedListener,
-        OnCameraChangeListener, OnCameraMoveListener {
+class BookingFragment: Fragment(), ObservableScrollViewCallbacks, OnMapClickListener,
+        OnMapInitializedListener, OnCameraChangeListener, OnCameraMoveListener, DatePickerListener {
 
     lateinit var mToolbarView: Toolbar
     lateinit var mImageView: ImageView
     lateinit var mScrollView: ObservableScrollView
     lateinit var mMapView: AirMapView
+    lateinit var mDatePicker: HorizontalPicker
     var mParallaxImageHeight: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -54,6 +58,7 @@ class BookingFragment: Fragment(), ObservableScrollViewCallbacks,
 
         mImageView = rootView.image
 
+//        Initialize Toolbar
         mToolbarView = rootView.toolbar
         mToolbarView.setBackgroundColor(ScrollUtils.getColorWithAlpha(0f, resources.getColor(R.color.primary)))
 
@@ -61,10 +66,12 @@ class BookingFragment: Fragment(), ObservableScrollViewCallbacks,
             activity.onBackPressed()
         }
 
+//        Initialize ScrollView
         mScrollView = rootView.scroll
         mScrollView.setScrollViewCallbacks(this)
         mParallaxImageHeight = resources.getDimensionPixelSize(R.dimen.parallax_image_height)
 
+//        Initialize MapView
         mMapView = rootView.map_view
         mMapView.setOnMapClickListener(this)
         mMapView.setOnCameraChangeListener(this)
@@ -72,9 +79,14 @@ class BookingFragment: Fragment(), ObservableScrollViewCallbacks,
         mMapView.setOnMapInitializedListener(this)
         mMapView.initialize(childFragmentManager)
 
+//        Initialize Date Picker
+        mDatePicker = rootView.datePicker
+        mDatePicker.setListener(this)
+                .showTodayButton(true)
+                .init()
 
-
-
+        mDatePicker.backgroundColor = Color.WHITE
+        mDatePicker.setDate(DateTime.now())
 
     }
 
@@ -88,7 +100,7 @@ class BookingFragment: Fragment(), ObservableScrollViewCallbacks,
     }
 
     override fun onScrollChanged(scrollY: Int, firstScroll: Boolean, dragging: Boolean) {
-        val baseColor = resources.getColor(R.color.primary)
+        val baseColor = resources.getColor(R.color.colorPrimary)
         val alpha = Math.min(1.toFloat(), (scrollY / mParallaxImageHeight).toFloat())
         mToolbarView.setBackgroundColor(ScrollUtils.getColorWithAlpha(alpha, baseColor))
     }
@@ -97,10 +109,12 @@ class BookingFragment: Fragment(), ObservableScrollViewCallbacks,
 
     }
 
+
+
     override fun onMapInitialized() {
-        val airbnbLatLng = LatLng(37.771883, -122.405224)
-        mMapView.animateCenterZoom(airbnbLatLng, 15)
-        mMapView.drawCircle(airbnbLatLng, 50, Color.parseColor("#79CCCD"),5, Color.parseColor("#8079CCCD"))
+        val currentLocation = LatLng(37.771883, -122.405224)
+        mMapView.animateCenterZoom(currentLocation, 15)
+        mMapView.drawCircle(currentLocation, 50, Color.parseColor("#79CCCD"),5, Color.parseColor("#8079CCCD"))
         mMapView.setMyLocationEnabled(false)
     }
 
@@ -114,6 +128,10 @@ class BookingFragment: Fragment(), ObservableScrollViewCallbacks,
 
     override fun onCameraMove() {
 
+    }
+
+    override fun onDateSelected(dateSelected: DateTime?) {
+        Toast.makeText(context, dateSelected!!.toString(), Toast.LENGTH_SHORT).show()
     }
 
     companion object {

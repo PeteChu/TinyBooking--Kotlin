@@ -121,6 +121,7 @@ class SignInFragment: Fragment(), GoogleApiClient.OnConnectionFailedListener {
                         Log.d(TAG, "signInWithCredential:success")
                         val user = mAuth!!.getCurrentUser()
                         updateUI(user)
+                        activity.finish()
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "signInWithCredential:failure", task.exception)
@@ -144,7 +145,7 @@ class SignInFragment: Fragment(), GoogleApiClient.OnConnectionFailedListener {
     }
     // [END signin]
 
-    private fun signOut() {
+    fun signOut() {
         // Firebase sign out
         mAuth!!.signOut()
 
@@ -161,14 +162,13 @@ class SignInFragment: Fragment(), GoogleApiClient.OnConnectionFailedListener {
     }
 
     private fun updateUI(user: FirebaseUser?) {
-
         var userInfo = com.example.tinybooking.dao.UserInfo
 
         userInfo.bulk {
             userDisplayName = user!!.displayName!!
-            userEmail = user!!.email!!
-            userId = user!!.uid
-            userPhotoUrl = user!!.photoUrl!!.toString()
+            userEmail = user.email!!
+            userId = user.uid
+            userPhotoUrl = user.photoUrl!!.toString()
 
         }
 
@@ -181,8 +181,6 @@ class SignInFragment: Fragment(), GoogleApiClient.OnConnectionFailedListener {
         Toast.makeText(context, "Google Play Services error.", Toast.LENGTH_SHORT).show()
     }
 
-
-
     companion object {
         fun newInstance(): SignInFragment {
             var fragment = SignInFragment()
@@ -190,6 +188,11 @@ class SignInFragment: Fragment(), GoogleApiClient.OnConnectionFailedListener {
             fragment.arguments = args
 
             return fragment
+        }
+
+        fun getInstance(): SignInFragment {
+            var instance = SignInFragment()
+            return instance
         }
     }
 

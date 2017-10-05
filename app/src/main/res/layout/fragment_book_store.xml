@@ -32,16 +32,16 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/anchor"
                 android:background="@android:color/white"
-                android:orientation="vertical"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin">
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_vertical_margin">
 
                     <TextView
                         android:id="@+id/poster"
@@ -53,17 +53,10 @@
                         android:gravity="center_vertical"
                         android:text="JK Football" />
 
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#E5E5E5"></View>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E5E5E5"></View>
 
                     <TextView
                         style="@style/subHeadFont"
@@ -72,7 +65,7 @@
                         android:text="เวลาเปิด - ปิด" />
 
                     <TextView
-                        style="@style/subHeadFont"
+                        style="@style/contentText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="10.00 : 24.00" />
@@ -84,7 +77,7 @@
                         android:text="โทร" />
 
                     <TextView
-                        style="@style/subHeadFont"
+                        style="@style/contentText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="089xxxxxxx" />
@@ -96,29 +89,32 @@
                         android:text="E-mail" />
 
                     <TextView
-                        style="@style/subHeadFont"
+                        style="@style/contentText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="asdf@hotmail.com" />
+                        android:text="jkfootball@hotmail.com" />
 
                     <TextView
                         style="@style/subHeadFont"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="แผนที่" />
-                    
-                    <com.airbnb.android.airmapview.AirMapView
-                        android:id="@+id/map_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"></com.airbnb.android.airmapview.AirMapView>
-
                 </LinearLayout>
+
+                <com.airbnb.android.airmapview.AirMapView
+                    android:id="@+id/map_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"></com.airbnb.android.airmapview.AirMapView>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_vertical_margin">
 
                     <TextView
                         style="@style/subHeadFont"
@@ -126,10 +122,8 @@
                         android:layout_height="wrap_content"
                         android:text="วันที่ต้องการจอง" />
 
-                    <TextView
-                        style="@style/subHeadFont"
-                        android:text="15 ตุลาคม 2560"
-                        android:textSize="20sp"
+                    <com.github.jhonnyx2012.horizontalpicker.HorizontalPicker
+                        android:id="@+id/datePicker"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -140,22 +134,30 @@
                         android:text="จำนวนชั่วโมง" />
 
                     <com.shawnlin.numberpicker.NumberPicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_gravity="center"
                         app:np_max="5"
-                        app:np_orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"></com.shawnlin.numberpicker.NumberPicker>
+                        app:np_orientation="horizontal"></com.shawnlin.numberpicker.NumberPicker>
 
-                    <TextView
-                        style="@style/subHeadFont"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="เวลาที่ว่าง" />
 
                 </LinearLayout>
 
+                <Button
+                    style="@style/contentText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#F16664"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:text="ดูเวลาที่ว่าง" />
+
 
             </LinearLayout>
+
 
         </RelativeLayout>
 
@@ -171,5 +173,6 @@
         android:minHeight="?attr/actionBarSize"
         app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
         app:theme="@style/Toolbar" />
+
 
 </FrameLayout>

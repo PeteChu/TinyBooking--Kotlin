@@ -3,8 +3,6 @@ package com.example.tinybooking
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.tinybooking.fragment.EditProfileFragment
-import com.example.tinybooking.fragment.ViewProfileFragment
-import kotlinx.android.synthetic.main.activity_profile.*
 
 class EditActivity : AppCompatActivity() {
 

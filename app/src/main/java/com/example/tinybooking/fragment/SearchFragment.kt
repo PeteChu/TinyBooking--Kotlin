@@ -37,7 +37,7 @@ class SearchFragment: Fragment() {
     }
 
     fun initInstances(rootView: View) {
-        loadData()
+//        loadData()
 
         mRecyclerView = rootView.list_search_item
         mRecyclerView!!.setHasFixedSize(true)

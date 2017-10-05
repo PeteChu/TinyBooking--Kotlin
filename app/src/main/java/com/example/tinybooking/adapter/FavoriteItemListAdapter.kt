@@ -1,11 +1,13 @@
 package com.example.tinybooking.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.tinybooking.ContentActivity
 import com.example.tinybooking.R
 
 /**
@@ -33,7 +35,8 @@ class FavoriteItemListAdapter: RecyclerView.Adapter<FavoriteItemListAdapter.View
         }
 
         private fun onClick(c: Context) {
-            Toast.makeText(c, "Clicked", Toast.LENGTH_LONG).show()
+            var intent = Intent(c, ContentActivity::class.java)
+            c.startActivity(intent)
         }
     }
 }

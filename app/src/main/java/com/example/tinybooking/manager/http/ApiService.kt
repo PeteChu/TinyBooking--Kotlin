@@ -1,11 +1,10 @@
 package com.example.tinybooking.manager.http
 
+import com.example.tinybooking.dao.AvailableTime
 import com.example.tinybooking.dao.ListStoreInfo
 import org.joda.time.DateTime
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 /**
  * Created by schecterza on 27/9/2017 AD.
@@ -13,10 +12,12 @@ import retrofit2.http.POST
 
 interface ApiService {
 
-    @GET("store")
+    @GET("/store")
     fun listRepos() : Call<ListStoreInfo>
 
-    @POST("test")
-    fun testPost(@Body dateTime: DateTime) : Call<String>
+    @POST("/test")
+    @FormUrlEncoded
+    fun testPost(@Field("date") date: String,
+                 @Field("numberHours") numberHours: Int) : Call<AvailableTime>
 
 }

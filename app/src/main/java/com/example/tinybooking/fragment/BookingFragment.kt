@@ -17,6 +17,7 @@ import com.airbnb.android.airmapview.listeners.OnCameraMoveListener
 import com.airbnb.android.airmapview.listeners.OnMapClickListener
 import com.airbnb.android.airmapview.listeners.OnMapInitializedListener
 import com.example.tinybooking.R
+import com.example.tinybooking.dao.AvailableTime
 import com.example.tinybooking.manager.HttpManager
 import com.github.jhonnyx2012.horizontalpicker.DatePickerListener
 import com.github.jhonnyx2012.horizontalpicker.HorizontalPicker
@@ -25,8 +26,10 @@ import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCal
 import com.github.ksoichiro.android.observablescrollview.ScrollState
 import com.github.ksoichiro.android.observablescrollview.ScrollUtils
 import com.google.android.gms.maps.model.LatLng
+import com.shawnlin.numberpicker.NumberPicker
 import kotlinx.android.synthetic.main.fragment_book_store.view.*
 import org.joda.time.DateTime
+import org.joda.time.format.DateTimeFormatter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -43,10 +46,12 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
     lateinit var mScrollView: ObservableScrollView
     lateinit var mMapView: AirMapView
     lateinit var mDatePicker: HorizontalPicker
+    lateinit var mHourPicker: NumberPicker
     lateinit var btnCheckAvailable: TextView
     var mParallaxImageHeight: Int = 0
 
     lateinit var pickedDate: DateTime
+    var numberHours: Int =0
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_book_store, container, false)
@@ -95,6 +100,14 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
         mDatePicker.backgroundColor = Color.WHITE
         mDatePicker.setDate(DateTime.now())
 
+//        Initialize Hour Picker
+        mHourPicker = rootView.hour_picker
+        numberHours = mHourPicker.value
+        mHourPicker.setOnValueChangedListener { picker, oldVal, newVal ->
+            Toast.makeText(context, newVal.toString(), Toast.LENGTH_SHORT).show()
+            numberHours = newVal
+        }
+
 //        Initialize Button Check Available
         btnCheckAvailable = rootView.btn_check_available
         btnCheckAvailable.setOnClickListener(myOnClick)
@@ -110,17 +123,16 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
     }
 
     private fun checkAvailableTime() {
-        Toast.makeText(context, pickedDate.toString(), Toast.LENGTH_SHORT).show()
 
-        var call = HttpManager.getInstance().getService().testPost(pickedDate)
-        call.enqueue(object : Callback<String> {
-            override fun onResponse(call: Call<String>?, response: Response<String>?) {
+        var call = HttpManager.getInstance().getService().testPost(pickedDate.toString("Y-MM-d"), numberHours)
+        call.enqueue(object : Callback<AvailableTime> {
+            override fun onResponse(call: Call<AvailableTime>?, response: Response<AvailableTime>?) {
                 if (response!!.isSuccessful) {
-                    Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show()
+
                 }
             }
 
-            override fun onFailure(call: Call<String>?, t: Throwable?) {
+            override fun onFailure(call: Call<AvailableTime>?, t: Throwable?) {
 
             }
         })

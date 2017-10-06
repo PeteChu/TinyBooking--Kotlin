@@ -134,6 +134,7 @@
                         android:text="จำนวนชั่วโมง" />
 
                     <com.shawnlin.numberpicker.NumberPicker
+                        android:id="@+id/hour_picker"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:layout_gravity="center"

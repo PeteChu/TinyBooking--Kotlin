@@ -14,6 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.tinybooking.R
 import com.example.tinybooking.adapter.NotificationListAdapter
+import kotlinx.android.synthetic.main.fragment_book.view.*
 import kotlinx.android.synthetic.main.fragment_notification.*
 import kotlinx.android.synthetic.main.fragment_notification.view.*
 
@@ -33,8 +34,11 @@ class NotificationFragment : Fragment() {
 
     fun initInstances(rootView: View) {
 
-        (activity as AppCompatActivity).supportActionBar!!.setTitle("Messages")
-        (activity as AppCompatActivity).supportActionBar!!.show()
+        var activity = (activity as AppCompatActivity)
+        activity.setSupportActionBar(rootView.noti_fragment_toolbar)
+        var actionBar = activity.supportActionBar!!
+        actionBar.setDisplayShowTitleEnabled(false)
+
         rf = rootView.nofi_refresh
         list = rootView.noti_list
         list.layoutManager = LinearLayoutManager(context)

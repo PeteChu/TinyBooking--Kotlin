@@ -3,29 +3,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:background="@color/colorPrimary"
-            android:id="@+id/nofi_refresh"
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/nofi_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:background="#ececec"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/noti_list"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#ececec"
+            android:orientation="vertical">
 
-                        </android.support.v7.widget.RecyclerView>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/noti_fragment_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/noti_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
 
 
+        </LinearLayout>
 
-                </LinearLayout>
-
-        </android.support.v4.widget.SwipeRefreshLayout>
-
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 
 </LinearLayout>

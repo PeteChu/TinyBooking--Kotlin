@@ -34,7 +34,8 @@ class ProfileFragment : Fragment() {
         var actionBar = activity.supportActionBar!!
         actionBar.setDisplayHomeAsUpEnabled(true)
         actionBar.setDisplayShowHomeEnabled(true)
-        actionBar.setDisplayShowTitleEnabled(false)
+        actionBar.setDisplayShowTitleEnabled(true)
+        actionBar.setTitle("Profile")
 
         toolbar.setNavigationOnClickListener {
             activity.onBackPressed()

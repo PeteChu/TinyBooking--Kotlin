@@ -38,7 +38,8 @@ class BookFragment : Fragment() {
         var activity = (activity as AppCompatActivity)
         activity.setSupportActionBar(rootView.book_fragment_toolbar)
         var actionBar = activity.supportActionBar!!
-        actionBar.setDisplayShowTitleEnabled(false)
+        actionBar.setDisplayShowTitleEnabled(true)
+        actionBar.setTitle("Book")
 
         mRecyclerView = rootView.list_book
         mRecyclerView!!.setHasFixedSize(true)

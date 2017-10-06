@@ -14,18 +14,10 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        initInstant()
+        initInstances()
     }
-    fun initInstant(){
-        toolbar = editprofile_toolbar
 
-        setSupportActionBar(toolbar)
-        toolbar.setNavigationOnClickListener{
-                onBackPressed()
-        }
-        supportActionBar!!.setTitle("Profile")
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
+    fun initInstances(){
 
         supportFragmentManager.beginTransaction()
                 .add(R.id.area_profile, ProfileFragment.newInstance())

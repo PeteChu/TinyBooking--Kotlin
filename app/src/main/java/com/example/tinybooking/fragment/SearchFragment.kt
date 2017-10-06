@@ -2,6 +2,7 @@ package com.example.tinybooking.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.example.tinybooking.R
 import com.example.tinybooking.adapter.SearchItemListAdapter
 import com.example.tinybooking.dao.ListStoreInfo
 import com.example.tinybooking.manager.HttpManager
+import kotlinx.android.synthetic.main.fragment_book.view.*
 import kotlinx.android.synthetic.main.fragment_search.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,6 +39,18 @@ class SearchFragment: Fragment() {
     }
 
     fun initInstances(rootView: View) {
+        var toolbar = rootView.search_fragment_toolbar
+        var activity = (activity as AppCompatActivity)
+        activity.setSupportActionBar(rootView.search_fragment_toolbar)
+        var actionBar = activity.supportActionBar!!
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayShowHomeEnabled(true)
+        actionBar.setDisplayShowTitleEnabled(false)
+
+        toolbar.setNavigationOnClickListener {
+            activity.onBackPressed()
+        }
+
 //        loadData()
 
         mRecyclerView = rootView.list_search_item
@@ -66,7 +80,7 @@ class SearchFragment: Fragment() {
             }
 
             override fun onFailure(call: Call<ListStoreInfo>?, t: Throwable?) {
-                Toast.makeText(activity, t!!.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(context, t!!.toString(), Toast.LENGTH_LONG).show()
             }
 
         })

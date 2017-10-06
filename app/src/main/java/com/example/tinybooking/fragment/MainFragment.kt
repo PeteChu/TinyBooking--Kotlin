@@ -1,19 +1,20 @@
 package com.example.tinybooking.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.LinearSnapHelper
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.example.tinybooking.R
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SnapHelper
-import android.view.Gravity
+import android.view.*
 import android.widget.LinearLayout
+import android.widget.Toast
+import com.example.tinybooking.SearchActivity
 import com.example.tinybooking.adapter.FavoriteItemListAdapter
+import kotlinx.android.synthetic.main.fragment_book_store.view.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
 
@@ -35,8 +36,11 @@ class MainFragment : Fragment() {
     }
 
     fun initInstances(rootView: View) {
-        (activity as AppCompatActivity).supportActionBar!!.setTitle("Tiny Booking")
-        (activity as AppCompatActivity).supportActionBar!!.show()
+
+        var activity = (activity as AppCompatActivity)
+        activity.setSupportActionBar(rootView.main_fragment_toolbar)
+        setHasOptionsMenu(true)
+
 
         mRecyclerView = rootView.list_favorite_item
         mRecyclerView!!.setHasFixedSize(true)
@@ -50,7 +54,23 @@ class MainFragment : Fragment() {
         mSnapHelper = LinearSnapHelper()
         mSnapHelper!!.attachToRecyclerView(mRecyclerView)
 
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater!!.inflate(R.menu.item_searchview, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
+        when(item!!.itemId) {
+            R.id.action_search -> {
+                var intent = Intent(context, SearchActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {

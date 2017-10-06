@@ -1,95 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/profile_fragment_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize" />
+
     <ImageView
-        android:src="@mipmap/ic_launcher_round"
-        android:layout_margin="10dp"
-        android:layout_gravity="center"
         android:layout_width="150dp"
-        android:layout_height="150dp" />
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:src="@mipmap/ic_launcher_round" />
+
     <LinearLayout
-        android:background="@color/colorLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
         android:layout_margin="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"></LinearLayout>
+        android:background="@color/colorLine"></LinearLayout>
+
     <LinearLayout
-        android:layout_weight="1"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <ScrollView
-            android:scrollbars="none"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="15dp"
-                    android:textStyle="bold"
                     android:text="Name"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/profile_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
                     android:layout_margin="15dp"
                     android:text="John Doe"
-                    />
-                <TextView
-                    android:layout_margin="15dp"
-                    android:textStyle="bold"
-                    android:text="Gender"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:textSize="18sp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:text="Gender"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="15dp"
                     android:text="male"
-                    />
+                    android:textSize="18sp" />
+
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="15dp"
-                    android:textStyle="bold"
                     android:text="Email"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/profile_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
                     android:layout_margin="15dp"
                     android:text="John_Doe@gmail.com"
-                    />
-                <TextView
-                    android:layout_margin="15dp"
-                    android:textStyle="bold"
-                    android:text="Birthday"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:textSize="18sp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:text="Birthday"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="15dp"
                     android:text="10/05/1995"
-                    />
-
+                    android:textSize="18sp" />
 
 
             </LinearLayout>
@@ -97,25 +112,27 @@
 
 
     </LinearLayout>
+
     <LinearLayout
-        android:layout_weight="2.2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:id="@+id/btn_edit_profile"
-            android:clickable="true"
-            android:background="@color/red"
-
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/red"
+            android:clickable="true"
+            android:padding="10dp">
+
             <TextView
-                android:textColor="#fff"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Edit"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 

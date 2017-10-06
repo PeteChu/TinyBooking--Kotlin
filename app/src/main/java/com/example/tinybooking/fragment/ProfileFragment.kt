@@ -3,6 +3,7 @@ package com.example.tinybooking.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,19 +21,28 @@ class ProfileFragment : Fragment() {
     lateinit var btnEdit: LinearLayout
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootview = inflater!!.inflate(R.layout.fragment_viewprofile, container, false)
-        initInstances(rootview)
-        return rootview
+        val rootView = inflater!!.inflate(R.layout.fragment_viewprofile, container, false)
+        initInstances(rootView)
+        return rootView
     }
 
-    fun initInstances(rootview : View){
+    fun initInstances(rootView: View) {
+
+        var toolbar = rootView.profile_fragment_toolbar
+        var activity = (activity as AppCompatActivity)
+        activity.setSupportActionBar(toolbar)
+        var actionBar = activity.supportActionBar!!
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayShowHomeEnabled(true)
+        actionBar.setDisplayShowTitleEnabled(false)
+
+        toolbar.setNavigationOnClickListener {
+            activity.onBackPressed()
+        }
 
 
-
-        btnEdit = rootview.btn_edit_profile
-        btnEdit.setOnClickListener{
-
-            
+        btnEdit = rootView.btn_edit_profile
+        btnEdit.setOnClickListener {
 
             var intent = Intent(context, EditActivity::class.java)
             startActivity(intent)
@@ -40,8 +50,8 @@ class ProfileFragment : Fragment() {
 
         var userInfo = UserInfo
 
-        rootview.profile_username.text = userInfo.userDisplayName
-        rootview.profile_email.text = userInfo.userEmail
+        rootView.profile_username.text = userInfo.userDisplayName
+        rootView.profile_email.text = userInfo.userEmail
 
     }
 

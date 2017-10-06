@@ -3,13 +3,13 @@ package com.example.tinybooking.fragment
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import com.airbnb.android.airmapview.AirMapView
 import com.airbnb.android.airmapview.listeners.OnCameraChangeListener
@@ -17,6 +17,7 @@ import com.airbnb.android.airmapview.listeners.OnCameraMoveListener
 import com.airbnb.android.airmapview.listeners.OnMapClickListener
 import com.airbnb.android.airmapview.listeners.OnMapInitializedListener
 import com.example.tinybooking.R
+import com.example.tinybooking.manager.HttpManager
 import com.github.jhonnyx2012.horizontalpicker.DatePickerListener
 import com.github.jhonnyx2012.horizontalpicker.HorizontalPicker
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollView
@@ -26,12 +27,15 @@ import com.github.ksoichiro.android.observablescrollview.ScrollUtils
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.fragment_book_store.view.*
 import org.joda.time.DateTime
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * Created by schecterza on 28/9/2017 AD.
  */
 
-class BookingFragment: Fragment(), ObservableScrollViewCallbacks, OnMapClickListener,
+class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickListener,
         OnMapInitializedListener, OnCameraChangeListener, OnCameraMoveListener, DatePickerListener {
 
     lateinit var mToolbarView: Toolbar
@@ -39,7 +43,10 @@ class BookingFragment: Fragment(), ObservableScrollViewCallbacks, OnMapClickList
     lateinit var mScrollView: ObservableScrollView
     lateinit var mMapView: AirMapView
     lateinit var mDatePicker: HorizontalPicker
+    lateinit var btnCheckAvailable: TextView
     var mParallaxImageHeight: Int = 0
+
+    lateinit var pickedDate: DateTime
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_book_store, container, false)
@@ -88,6 +95,35 @@ class BookingFragment: Fragment(), ObservableScrollViewCallbacks, OnMapClickList
         mDatePicker.backgroundColor = Color.WHITE
         mDatePicker.setDate(DateTime.now())
 
+//        Initialize Button Check Available
+        btnCheckAvailable = rootView.btn_check_available
+        btnCheckAvailable.setOnClickListener(myOnClick)
+
+    }
+
+    var myOnClick = View.OnClickListener { v ->
+        when (v) {
+            btnCheckAvailable -> {
+                checkAvailableTime()
+            }
+        }
+    }
+
+    private fun checkAvailableTime() {
+        Toast.makeText(context, pickedDate.toString(), Toast.LENGTH_SHORT).show()
+
+        var call = HttpManager.getInstance().getService().testPost(pickedDate)
+        call.enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>?, response: Response<String>?) {
+                if (response!!.isSuccessful) {
+                    Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<String>?, t: Throwable?) {
+
+            }
+        })
     }
 
     override fun onUpOrCancelMotionEvent(scrollState: ScrollState?) {
@@ -96,7 +132,7 @@ class BookingFragment: Fragment(), ObservableScrollViewCallbacks, OnMapClickList
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-        onScrollChanged(mScrollView.scrollY, false, false);
+        onScrollChanged(mScrollView.scrollY, false, false)
     }
 
     override fun onScrollChanged(scrollY: Int, firstScroll: Boolean, dragging: Boolean) {
@@ -110,11 +146,10 @@ class BookingFragment: Fragment(), ObservableScrollViewCallbacks, OnMapClickList
     }
 
 
-
     override fun onMapInitialized() {
         val currentLocation = LatLng(37.771883, -122.405224)
         mMapView.animateCenterZoom(currentLocation, 15)
-        mMapView.drawCircle(currentLocation, 50, Color.parseColor("#79CCCD"),5, Color.parseColor("#8079CCCD"))
+        mMapView.drawCircle(currentLocation, 75, Color.parseColor("#79CCCD"), 5, Color.parseColor("#8079CCCD"))
         mMapView.setMyLocationEnabled(false)
     }
 
@@ -132,6 +167,7 @@ class BookingFragment: Fragment(), ObservableScrollViewCallbacks, OnMapClickList
 
     override fun onDateSelected(dateSelected: DateTime?) {
         Toast.makeText(context, dateSelected!!.toString(), Toast.LENGTH_SHORT).show()
+        pickedDate = dateSelected
     }
 
     companion object {

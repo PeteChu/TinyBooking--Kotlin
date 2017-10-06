@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.tinybooking.fragment.MainFragment
 import com.example.tinybooking.fragment.TabbarFragment
-import com.example.tinybooking.fragment.ToolbarWithSearchViewFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,9 +16,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun initInstances() {
 
-        supportFragmentManager.beginTransaction()
-                .add(R.id.toolbar_container_main_activity, ToolbarWithSearchViewFragment.newInstance())
-                .commit()
+//        supportFragmentManager.beginTransaction()
+//                .add(R.id.toolbar_container_main_activity, ToolbarWithSearchViewFragment.newInstance())
+//                .commit()
 
         supportFragmentManager.beginTransaction()
                 .add(R.id.content_main_activity, MainFragment.newInstance())

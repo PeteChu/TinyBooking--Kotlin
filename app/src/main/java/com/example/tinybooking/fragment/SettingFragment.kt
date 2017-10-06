@@ -17,7 +17,7 @@ import com.example.tinybooking.SignInActivity
 import com.example.tinybooking.dao.UserInfo
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_profile.view.*
+import kotlinx.android.synthetic.main.fragment_setting.view.*
 
 
 /**
@@ -35,7 +35,7 @@ class SettingFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater!!.inflate(R.layout.fragment_profile, container, false)
+        val rootView = inflater!!.inflate(R.layout.fragment_setting, container, false)
         initInstances(rootView)
         return rootView
     }

@@ -1,75 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
-        android:orientation="horizontal"
-        android:id="@+id/item_noti"
-        android:background="#fff"
-        android:elevation="2dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/item_noti"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="100dp"
+        android:background="#fff"
+
+        android:elevation="2dp"
+        android:orientation="horizontal">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <LinearLayout
-                android:background="@color/colorLine"
                 android:layout_width="match_parent"
-                android:layout_height="0.5dp">
+                android:layout_height="1dp"
+                android:background="@color/colorLine">
 
             </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <LinearLayout
-                    android:layout_weight="3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <com.joooonho.SelectableRoundedImageView
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
-                        android:scaleType="fitXY"
 
-                        android:src="@drawable/person"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3">
+
+                    <com.joooonho.SelectableRoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
+                        android:scaleType="fitXY"
+                        android:src="@drawable/person"
 
                         />
                 </LinearLayout>
+
                 <LinearLayout
 
-                    android:paddingLeft="5dp"
-                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:paddingLeft="5dp"
+                    android:paddingTop="10dp">
+
                     <TextView
-                        android:textColor="#1776d5"
-                        android:layout_margin="3dp"
                         android:id="@+id/noti_date"
-                        android:text="20-Sep-2017"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:text="20-Sep-2017"
+                        android:textColor="#1776d5" />
+
                     <TextView
                         android:id="@+id/noti_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_margin="3dp"
                         android:text="ร้าน : เตะบอลกัน"
                         android:textColor="@color/colorPrimaryDark"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/noti_subtitle"
-                        android:layout_margin="3dp"
-                        android:text="จองสนามบอลวันนี้รับฟรีพริตตี้"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:text="จองสนามบอลวันนี้รับฟรีพริตตี้" />
                 </LinearLayout>
             </LinearLayout>
 

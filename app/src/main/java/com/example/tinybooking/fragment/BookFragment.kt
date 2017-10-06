@@ -16,6 +16,7 @@ import com.example.tinybooking.R
 import com.example.tinybooking.adapter.BookItemList
 import com.example.tinybooking.adapter.FavoriteItemListAdapter
 import kotlinx.android.synthetic.main.fragment_book.view.*
+import kotlinx.android.synthetic.main.fragment_book_store.view.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
 /**
@@ -34,8 +35,10 @@ class BookFragment : Fragment() {
     }
 
     fun initInstances(rootView: View) {
-        (activity as AppCompatActivity).supportActionBar!!.setTitle("My Booking")
-        (activity as AppCompatActivity).supportActionBar!!.show()
+        var activity = (activity as AppCompatActivity)
+        activity.setSupportActionBar(rootView.book_fragment_toolbar)
+        var actionBar = activity.supportActionBar!!
+        actionBar.setDisplayShowTitleEnabled(false)
 
         mRecyclerView = rootView.list_book
         mRecyclerView!!.setHasFixedSize(true)

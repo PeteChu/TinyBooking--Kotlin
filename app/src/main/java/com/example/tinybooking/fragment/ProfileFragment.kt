@@ -7,11 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import com.example.tinybooking.EditActivity
 import com.example.tinybooking.R
 import com.example.tinybooking.dao.UserInfo
-import kotlinx.android.synthetic.main.fragment_profile.view.*
 import kotlinx.android.synthetic.main.fragment_viewprofile.view.*
+import android.widget.Toast
+import com.example.tinybooking.EditActivity
+import com.example.tinybooking.manager.PostService
 
 
 class ProfileFragment : Fragment() {
@@ -30,6 +31,9 @@ class ProfileFragment : Fragment() {
 
         btnEdit = rootview.btn_edit_profile
         btnEdit.setOnClickListener{
+
+            
+
             var intent = Intent(context, EditActivity::class.java)
             startActivity(intent)
         }
@@ -50,4 +54,24 @@ class ProfileFragment : Fragment() {
             return fragment
         }
     }
+    public fun thread(start: Boolean = true, isDaemon: Boolean = false, contextClassLoader: ClassLoader? = null, name: String? = null, priority: Int = -1, block: () -> Unit): Thread {
+        val thread = object : Thread() {
+            public override fun run() {
+               Toast.makeText(context,"123",Toast.LENGTH_SHORT).show()
+            }
+        }
+        if (isDaemon)
+            thread.isDaemon = true
+        if (priority > 0)
+            thread.priority = priority
+        if (name != null)
+            thread.name = name
+        if (contextClassLoader != null)
+            thread.contextClassLoader = contextClassLoader
+        if (start)
+            thread.start()
+        return thread
+    }
 }
+
+

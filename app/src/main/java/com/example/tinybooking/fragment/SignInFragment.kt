@@ -163,6 +163,7 @@ class SignInFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
     private fun updateUI(user: FirebaseUser?) {
 
         var userInfo = com.example.tinybooking.dao.UserInfo
+        
         userInfo.bulk {
             userTinyId = 123456
             userDisplayName = user!!.displayName!!

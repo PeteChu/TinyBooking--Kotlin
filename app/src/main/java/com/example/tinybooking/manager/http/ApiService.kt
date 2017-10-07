@@ -13,11 +13,14 @@ import retrofit2.http.*
 interface ApiService {
 
     @GET("/store")
-    fun listRepos() : Call<ListStoreInfo>
+    fun listRepos(): Call<ListStoreInfo>
 
     @POST("/test")
     @FormUrlEncoded
-    fun testPost(@Field("date") date: String,
-                 @Field("numberHours") numberHours: Int) : Call<AvailableTime>
+    fun testPost(@Field("sId") storeId: Int,
+                 @Field("date") date: String,
+                 @Field("numberHours") numberHours: Int,
+                 @Field("openTime") openTime: Int,
+                 @Field("closeTime") closeTime: Int): Call<AvailableTime>
 
 }

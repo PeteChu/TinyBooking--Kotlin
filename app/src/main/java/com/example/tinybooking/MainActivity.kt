@@ -16,10 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun initInstances() {
 
-//        supportFragmentManager.beginTransaction()
-//                .add(R.id.toolbar_container_main_activity, ToolbarWithSearchViewFragment.newInstance())
-//                .commit()
-
         supportFragmentManager.beginTransaction()
                 .add(R.id.content_main_activity, MainFragment.newInstance())
                 .commit()

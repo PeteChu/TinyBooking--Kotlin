@@ -15,7 +15,7 @@ class HttpManager {
     constructor() {
 
         var retrofit = Retrofit.Builder()
-                .baseUrl("http://10.253.111.28:9999/")
+                .baseUrl("http://192.168.43.185:9999/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 

@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import com.afollestad.materialdialogs.MaterialDialog
 import com.airbnb.android.airmapview.AirMapView
 import com.airbnb.android.airmapview.listeners.OnCameraChangeListener
 import com.airbnb.android.airmapview.listeners.OnCameraMoveListener
@@ -51,7 +52,7 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
     var mParallaxImageHeight: Int = 0
 
     lateinit var pickedDate: DateTime
-    var numberHours: Int =0
+    var numberHours: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_book_store, container, false)
@@ -124,10 +125,27 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
 
     private fun checkAvailableTime() {
 
-        var call = HttpManager.getInstance().getService().testPost(pickedDate.toString("Y-MM-d"), numberHours)
+        var call = HttpManager.getInstance().getService().testPost(123456, pickedDate.toString("Y-MM-d"), numberHours, 10, 24)
         call.enqueue(object : Callback<AvailableTime> {
             override fun onResponse(call: Call<AvailableTime>?, response: Response<AvailableTime>?) {
                 if (response!!.isSuccessful) {
+                    var listAvailableTime = response.body()!!.availableTime
+
+                    MaterialDialog.Builder(context)
+                            .title("ช่วงเวลาที่ว่าง")
+                            .items(listAvailableTime)
+                            .itemsCallbackSingleChoice(-1, object : MaterialDialog.ListCallbackSingleChoice {
+                                override fun onSelection(dialog: MaterialDialog?, itemView: View?, which: Int, text: CharSequence?): Boolean {
+                                    fragmentManager.beginTransaction()
+                                            .replace(R.id.content_container_content_activity, ConfirmBookingFragment.newInstance())
+                                            .addToBackStack(null)
+                                            .commit()
+                                    return true
+                                }
+                            })
+                            .positiveText("ตกลง")
+                            .negativeText("ยกเลิก")
+                            .show()
 
                 }
             }

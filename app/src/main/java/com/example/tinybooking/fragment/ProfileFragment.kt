@@ -13,7 +13,7 @@ import com.example.tinybooking.dao.UserInfo
 import kotlinx.android.synthetic.main.fragment_viewprofile.view.*
 import android.widget.Toast
 import com.example.tinybooking.EditActivity
-import com.example.tinybooking.manager.PostService
+
 
 
 class ProfileFragment : Fragment() {

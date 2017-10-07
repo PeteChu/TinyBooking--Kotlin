@@ -87,7 +87,7 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
     }
 
     fun initInstances(rootView: View) {
-        
+
         var activity = (activity as AppCompatActivity)
         activity.setSupportActionBar(rootView.toolbar)
         var actionBar = activity.supportActionBar!!
@@ -244,10 +244,11 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
         Toast.makeText(context, dateSelected!!.toString(), Toast.LENGTH_SHORT).show()
         pickedDate = dateSelected
     }
-    fun getTime(time:String): Array<String> {
+    
+    fun getTime(time: String): Array<String> {
         var open = time.split("-")[0].split(".")[0]
         var close = time.split("-")[1].split(".")[0]
-        return arrayOf(open,close);
+        return arrayOf(open, close);
 
     }
 

@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import com.afollestad.materialdialogs.DialogAction
+import com.afollestad.materialdialogs.MaterialDialog
 import com.chibatching.kotpref.Kotpref
 import com.example.tinybooking.R
 import com.example.tinybooking.dao.UserInfo
@@ -111,18 +113,26 @@ class ConfirmBookingFragment : Fragment() {
 
     fun bookField() {
 
-        Toast.makeText(context, "Book", Toast.LENGTH_SHORT).show()
         var call = HttpManager.getInstance().getService().bookField(userId, fieldId, bookDate, numberHours, getTime(bookTime)[0].toInt())
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>?, response: Response<String>?) {
                 if (response!!.isSuccessful) {
-                    Toast.makeText(context, response.body()!!.toString(), Toast.LENGTH_SHORT).show()
-                    fragmentManager.popBackStack()
+
+                    MaterialDialog.Builder(context)
+                            .title("จองสำเร็จ")
+                            .onPositive(object : MaterialDialog.SingleButtonCallback {
+                                override fun onClick(dialog: MaterialDialog, which: DialogAction) {
+                                    fragmentManager.popBackStack()
+                                }
+                            })
+                            .positiveText("ตกลง")
+                            .show()
+
                 }
             }
 
             override fun onFailure(call: Call<String>?, t: Throwable?) {
-                Toast.makeText(context, t.toString(), Toast.LENGTH_SHORT).show()
+
             }
         })
 

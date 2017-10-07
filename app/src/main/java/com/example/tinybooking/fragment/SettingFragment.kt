@@ -61,17 +61,14 @@ class SettingFragment : Fragment() {
         var user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
             updateUser()
-        } else {
-
         }
-
 
     }
 
     val myOnClick = View.OnClickListener{v ->
         when(v) {
             v.btn_log_in -> goToSignInView()
-//            v.btn_log_out -> signOut()
+            v.btn_log_out -> signOut()
         }
     }
 
@@ -91,7 +88,6 @@ class SettingFragment : Fragment() {
         textViewUserName.text = userData.userDisplayName
         Picasso.with(context).load(userData.userPhotoUrl).into(imageViewUserProfile)
     }
-
 
     companion object {
         fun newInstance(): SettingFragment {

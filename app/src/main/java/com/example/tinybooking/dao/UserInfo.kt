@@ -13,6 +13,5 @@ object UserInfo: KotprefModel() {
     var userEmail by stringPref()
     var userId by stringPref(default = "000000")
     var userPhotoUrl by stringPref()
-
 }
 

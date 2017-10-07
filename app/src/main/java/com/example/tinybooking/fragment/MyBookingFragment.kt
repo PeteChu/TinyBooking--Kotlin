@@ -54,8 +54,6 @@ class MyBookingFragment : Fragment() {
         mLayoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
         mRecyclerView!!.layoutManager = mLayoutManager
 
-
-
         mSnapHelper = LinearSnapHelper()
         mSnapHelper!!.attachToRecyclerView(mRecyclerView)
 
@@ -78,8 +76,6 @@ class MyBookingFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<ListMyBook>?, t: Throwable?) {
-                Toast.makeText(context, t.toString(), Toast.LENGTH_SHORT).show()
-
             }
         })
     }

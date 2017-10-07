@@ -173,11 +173,19 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
                                 .items(listAvailableTime)
                                 .itemsCallbackSingleChoice(-1, object : MaterialDialog.ListCallbackSingleChoice {
                                     override fun onSelection(dialog: MaterialDialog?, itemView: View?, which: Int, text: CharSequence?): Boolean {
-                                        fragmentManager.beginTransaction()
-                                                .replace(R.id.content_container_content_activity,
-                                                        ConfirmBookingFragment.newInstance(fieldId, fieldName, pickedDate.toString("Y-MM-d"), text!!.toString(), numberHours))
-                                                .addToBackStack(null)
-                                                .commit()
+                                        if (text != null) {
+                                            fragmentManager.beginTransaction()
+                                                    .replace(R.id.content_container_content_activity,
+                                                            ConfirmBookingFragment.newInstance(fieldId, fieldName, pickedDate.toString("Y-MM-d"), text!!.toString(), numberHours))
+                                                    .addToBackStack(null)
+                                                    .commit()
+                                        } else {
+                                            MaterialDialog.Builder(context)
+                                                    .content("กรุณาเลือกช่วงเวลาที่ต้องการ")
+                                                    .positiveText("ตกลง")
+                                                    .show()
+                                        }
+
                                         return true
                                     }
                                 })

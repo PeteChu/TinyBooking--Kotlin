@@ -16,6 +16,9 @@ interface ApiService {
     @GET("/store")
     fun listRepos(): Call<ListStoreInfo>
 
+    @GET("/findstore/{id}")
+    fun findField(@Path("id") fieldId: Int): Call<ListStoreInfo>
+
     @POST("/readbook")
     @FormUrlEncoded
     fun myBook(@Field("uId") userId: Int): Call<ListMyBook>

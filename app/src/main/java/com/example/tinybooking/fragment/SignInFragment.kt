@@ -33,7 +33,6 @@ class SignInFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
     // [START declare_auth]
     private var mAuth: FirebaseAuth? = null
     // [END declare_auth]
-
     private var mGoogleApiClient: GoogleApiClient? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -48,7 +47,6 @@ class SignInFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
 
         var signInBtn = rootView.sign_in_button
         signInBtn.setOnClickListener(myOnclick)
-
 
         // [START config_signin]
         // Configure Google Sign In
@@ -146,31 +144,43 @@ class SignInFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
 
     fun signOut() {
         // Firebase sign out
+        mAuth = FirebaseAuth.getInstance()
         mAuth!!.signOut()
 
-        // Google sign out
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient)
+//        // Google sign out
+//        if (mGoogleApiClient!!.isConnected) {
+//            Auth.GoogleSignInApi.signOut(mGoogleApiClient)
+//            mGoogleApiClient!!.disconnect()
+//        }
     }
 
     private fun revokeAccess() {
         // Firebase sign out
+        mAuth = FirebaseAuth.getInstance()
         mAuth!!.signOut()
 
-        // Google revoke access
-        Auth.GoogleSignInApi.revokeAccess(mGoogleApiClient)
+
+//        // Google revoke access
+//        if (mGoogleApiClient!!.isConnected) {
+//            Auth.GoogleSignInApi.revokeAccess(mGoogleApiClient)
+//            mGoogleApiClient!!.disconnect()
+//        }
+
     }
 
     private fun updateUI(user: FirebaseUser?) {
 
-        var userInfo = com.example.tinybooking.dao.UserInfo
-        
-        userInfo.bulk {
-            userTinyId = 123456
-            userDisplayName = user!!.displayName!!
-            userEmail = user.email!!
-            userId = user.uid
-            userPhotoUrl = user.photoUrl!!.toString()
+        if (user != null) {
+            var userInfo = com.example.tinybooking.dao.UserInfo
 
+            userInfo.bulk {
+                userTinyId = 123456
+                userDisplayName = user!!.displayName!!
+                userEmail = user.email!!
+                userId = user.uid
+                userPhotoUrl = user.photoUrl!!.toString()
+
+            }
         }
 
     }

@@ -49,8 +49,7 @@ class MyBookingFragment : Fragment() {
         mLayoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
         mRecyclerView!!.layoutManager = mLayoutManager
 
-        mAdapter = BookItemList()
-        mRecyclerView!!.adapter = mAdapter
+
 
         mSnapHelper = LinearSnapHelper()
         mSnapHelper!!.attachToRecyclerView(mRecyclerView)
@@ -63,7 +62,12 @@ class MyBookingFragment : Fragment() {
         call.enqueue(object : Callback<ListMyBook> {
             override fun onResponse(call: Call<ListMyBook>?, response: Response<ListMyBook>?) {
                 if (response!!.isSuccessful) {
-                    Toast.makeText(context, response.body()!!.book[0].sid.toString(), Toast.LENGTH_SHORT).show()
+                    var listMyBook = response.body()!!.book
+
+                    if (listMyBook.isNotEmpty()) {
+                        mAdapter = BookItemList(context, listMyBook)
+                        mRecyclerView!!.adapter = mAdapter
+                    }
                 }
 
             }

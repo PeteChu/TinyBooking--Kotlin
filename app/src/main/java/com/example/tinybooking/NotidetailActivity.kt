@@ -12,8 +12,9 @@ class NotidetailActivity : AppCompatActivity() {
         initInstant()
     }
     fun initInstant(){
+        var intent = getIntent().extras
         supportFragmentManager.beginTransaction()
-                .add(R.id.area_notification_detail, NotificationDetail.newInstance())
+                .add(R.id.area_notification_detail, NotificationDetail.newInstance(intent))
                 .commit()
     }
 }

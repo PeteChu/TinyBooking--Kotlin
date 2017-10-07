@@ -43,6 +43,7 @@ class NotificationFragment : Fragment() {
         list = rootView.noti_list
         list.layoutManager = LinearLayoutManager(context)
         list.adapter = adapterNoti
+
         rf.setColorSchemeResources(R.color.colorPrimary)
         rf.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener {
             val handler = Handler()

@@ -8,6 +8,7 @@ import com.chibatching.kotpref.KotprefModel
  */
 
 object UserInfo: KotprefModel() {
+    var userTinyId by intPref(default = 0)
     var userDisplayName by stringPref(default = "John Doe")
     var userEmail by stringPref()
     var userId by stringPref(default = "000000")

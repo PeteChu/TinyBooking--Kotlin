@@ -42,7 +42,6 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
         OnMapInitializedListener, DatePickerListener {
 
     lateinit var mToolbarView: Toolbar
-    lateinit var mImageView: ImageView
     lateinit var mScrollView: ObservableScrollView
     lateinit var mMapView: AirMapView
     lateinit var mDatePicker: HorizontalPicker
@@ -177,7 +176,7 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
                                 .itemsCallbackSingleChoice(-1, object : MaterialDialog.ListCallbackSingleChoice {
                                     override fun onSelection(dialog: MaterialDialog?, itemView: View?, which: Int, text: CharSequence?): Boolean {
                                         fragmentManager.beginTransaction()
-                                                .replace(R.id.content_container_content_activity, ConfirmBookingFragment.newInstance(text.toString()))
+                                                .replace(R.id.content_container_content_activity, ConfirmBookingFragment.newInstance(fieldId, fieldName, pickedDate.toString("Y-MM-d"), text!!.toString()))
                                                 .addToBackStack(null)
                                                 .commit()
                                         return true

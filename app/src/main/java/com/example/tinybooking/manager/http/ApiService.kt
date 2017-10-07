@@ -1,6 +1,7 @@
 package com.example.tinybooking.manager.http
 
 import com.example.tinybooking.dao.AvailableTime
+import com.example.tinybooking.dao.ListMyBook
 import com.example.tinybooking.dao.ListStoreInfo
 import org.joda.time.DateTime
 import retrofit2.Call
@@ -14,6 +15,10 @@ interface ApiService {
 
     @GET("/store")
     fun listRepos(): Call<ListStoreInfo>
+
+    @POST("/readbook")
+    @FormUrlEncoded
+    fun myBook(@Field("uId") userId: Int): Call<ListMyBook>
 
     @POST("/getbook")
     @FormUrlEncoded

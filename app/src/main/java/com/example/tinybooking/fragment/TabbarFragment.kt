@@ -56,7 +56,7 @@ class TabbarFragment: Fragment() {
 
     fun goToBookView() {
         fragmentManager.beginTransaction()
-                .replace(R.id.content_main_activity, BookFragment.newInstance())
+                .replace(R.id.content_main_activity, MyBookingFragment.newInstance())
                 .commit()
     }
 

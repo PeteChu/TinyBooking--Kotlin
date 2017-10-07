@@ -25,7 +25,7 @@
                 android:layout_height="200dp">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/cv_favorite_imageView"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:scaleType="fitXY"
@@ -40,69 +40,76 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:textColor="@color/blue"
+                    android:id="@+id/cv_favorite_field_name"
                     style="@style/subHeadFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="JK Football" />
+                    android:text="JK Football"
+                    android:textColor="@color/blue" />
 
                 <!-- Line divider setting button -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:background="@color/colorLine" />
+
                 <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
                         <TextView
                             style="@style/subHeadFont"
-                            android:text="Open"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="Open" />
 
                         <TextView
-                            android:layout_marginLeft="10dp"
-                            android:textSize="18sp"
+                            android:id="@+id/cv_favorite_field_time"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="9.00 - 22.00" />
+                            android:layout_marginLeft="10dp"
+                            android:text="9.00 - 22.00"
+                            android:textSize="18sp" />
+
                         <TextView
-                            android:layout_marginTop="10dp"
                             style="@style/subHeadFont"
-                            android:text="Phone"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:layout_marginLeft="10dp"
-                            android:textSize="18sp"
-                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="0836838228" />
+                            android:layout_marginTop="10dp"
+                            android:text="Phone" />
 
                         <TextView
-                            android:layout_marginTop="10dp"
+                            android:id="@+id/cv_favorite_field_tel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="0836838228"
+                            android:textSize="18sp" />
+
+                        <TextView
                             style="@style/subHeadFont"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
                             android:text="Address" />
+
                         <TextView
-                            android:textSize="18sp"
-                            android:text="85 ตำบลเมืองศรีไค อำเภอวารินชำราบ จังหวัดอุบลราชธานี 34190"
+                            android:id="@+id/cv_favorite_field_addr"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            />
+                            android:text="85 ตำบลเมืองศรีไค อำเภอวารินชำราบ จังหวัดอุบลราชธานี 34190"
+                            android:textSize="18sp" />
                     </LinearLayout>
                 </ScrollView>
-
 
 
             </LinearLayout>

@@ -1,7 +1,6 @@
 package com.example.tinybooking.fragment
 
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -12,18 +11,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import com.example.tinybooking.R
 import com.example.tinybooking.adapter.BookItemList
-import com.example.tinybooking.adapter.FavoriteItemListAdapter
+import com.example.tinybooking.dao.ListMyBook
+import com.example.tinybooking.manager.HttpManager
 import kotlinx.android.synthetic.main.fragment_book.view.*
-import kotlinx.android.synthetic.main.fragment_book_store.view.*
-import kotlinx.android.synthetic.main.fragment_main.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * Created by schecterza on 9/12/2017 AD.
  */
 
-class BookFragment : Fragment() {
+class MyBookingFragment : Fragment() {
     private var mSnapHelper: SnapHelper? = null
     private var mRecyclerView: RecyclerView? = null
     private var mAdapter: RecyclerView.Adapter<*>? = null
@@ -52,11 +54,30 @@ class BookFragment : Fragment() {
 
         mSnapHelper = LinearSnapHelper()
         mSnapHelper!!.attachToRecyclerView(mRecyclerView)
+
+        loadData()
+    }
+
+    fun loadData() {
+        var call = HttpManager.getInstance().getService().myBook(123456)
+        call.enqueue(object : Callback<ListMyBook> {
+            override fun onResponse(call: Call<ListMyBook>?, response: Response<ListMyBook>?) {
+                if (response!!.isSuccessful) {
+                    Toast.makeText(context, response.body()!!.book[0].sid.toString(), Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+            override fun onFailure(call: Call<ListMyBook>?, t: Throwable?) {
+                Toast.makeText(context, t.toString(), Toast.LENGTH_SHORT).show()
+
+            }
+        })
     }
 
     companion object {
-        fun newInstance(): BookFragment {
-            var fragment = BookFragment()
+        fun newInstance(): MyBookingFragment {
+            var fragment = MyBookingFragment()
             var args = Bundle()
             fragment.arguments = args
             return fragment

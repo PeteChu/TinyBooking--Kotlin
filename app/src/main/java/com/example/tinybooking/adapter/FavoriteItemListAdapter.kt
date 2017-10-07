@@ -6,17 +6,18 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.example.tinybooking.ContentActivity
 import com.example.tinybooking.R
 import com.example.tinybooking.dao.ListStoreInfo
 import com.example.tinybooking.dao.StoreInfo
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.cardview_favorite.view.*
 
 /**
  * Created by schecterza on 9/22/2017.
  */
 
-class FavoriteItemListAdapter(context: Context, listStoreInfo: ListStoreInfo): RecyclerView.Adapter<FavoriteItemListAdapter.ViewHolder>() {
+class FavoriteItemListAdapter(context: Context, listStoreInfo: ListStoreInfo) : RecyclerView.Adapter<FavoriteItemListAdapter.ViewHolder>() {
 
     var mListStoreInfo = listStoreInfo.store
     var mContext = context
@@ -36,6 +37,11 @@ class FavoriteItemListAdapter(context: Context, listStoreInfo: ListStoreInfo): R
 
         fun bindData(context: Context, data: List<StoreInfo>, position: Int) {
             var fieldData = data[position]
+            Picasso.with(context).load(fieldData.image).into(itemView.cv_favorite_imageView)
+            itemView.cv_favorite_field_name.text = fieldData.name
+            itemView.cv_favorite_field_time.text = fieldData.opentime
+            itemView.cv_favorite_field_tel.text = fieldData.phone
+            itemView.cv_favorite_field_addr.text = fieldData.address
             itemView.setOnClickListener { onClick(itemView.context, fieldData) }
         }
 

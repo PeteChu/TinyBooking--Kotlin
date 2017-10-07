@@ -172,7 +172,6 @@ class SignInFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
 
         }
 
-
     }
 
     override fun onConnectionFailed(connectionResult: ConnectionResult) {

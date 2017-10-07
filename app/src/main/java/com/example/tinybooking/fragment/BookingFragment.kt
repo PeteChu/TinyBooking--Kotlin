@@ -127,7 +127,6 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
         mHourPicker = rootView.hour_picker
         numberHours = mHourPicker.value
         mHourPicker.setOnValueChangedListener { picker, oldVal, newVal ->
-            Toast.makeText(context, newVal.toString(), Toast.LENGTH_SHORT).show()
             numberHours = newVal
         }
 
@@ -242,8 +241,7 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
 
 
     override fun onDateSelected(dateSelected: DateTime?) {
-        Toast.makeText(context, dateSelected!!.toString(), Toast.LENGTH_SHORT).show()
-        pickedDate = dateSelected
+        pickedDate = dateSelected!!
     }
 
     fun getTime(): Array<String> {

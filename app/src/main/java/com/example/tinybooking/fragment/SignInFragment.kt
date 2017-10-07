@@ -25,7 +25,7 @@ import com.google.android.gms.common.ConnectionResult
  * Created by schecterza on 30/9/2017 AD.
  */
 
-class SignInFragment: Fragment(), GoogleApiClient.OnConnectionFailedListener {
+class SignInFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
 
     private val TAG = "GoogleActivity"
     private val RC_SIGN_IN = 9001
@@ -70,21 +70,20 @@ class SignInFragment: Fragment(), GoogleApiClient.OnConnectionFailedListener {
 
     }
 
-    var myOnclick = View.OnClickListener{v ->
-        when(v.id) {
+    var myOnclick = View.OnClickListener { v ->
+        when (v.id) {
             R.id.sign_in_button -> signIn()
         }
     }
 
-    // [START on_start_check_user]
-    override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = mAuth!!.getCurrentUser()
-        updateUI(currentUser)
-    }
-
-    // [END on_start_check_user]
+//    // [START on_start_check_user]
+//    override fun onStart() {
+//        super.onStart()
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        val currentUser = mAuth!!.getCurrentUser()
+//        updateUI(currentUser)
+//    }
+//    // [END on_start_check_user]
 
     // [START onactivityresult]
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -116,7 +115,7 @@ class SignInFragment: Fragment(), GoogleApiClient.OnConnectionFailedListener {
 
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         mAuth!!.signInWithCredential(credential)
-                .addOnCompleteListener( { task ->
+                .addOnCompleteListener({ task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithCredential:success")
@@ -140,7 +139,6 @@ class SignInFragment: Fragment(), GoogleApiClient.OnConnectionFailedListener {
     // [START signin]
     private fun signIn() {
         Toast.makeText(context, "Signing In...", Toast.LENGTH_LONG).show()
-
         val signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient)
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
@@ -164,18 +162,16 @@ class SignInFragment: Fragment(), GoogleApiClient.OnConnectionFailedListener {
 
     private fun updateUI(user: FirebaseUser?) {
 
-        if (user != null) {
-            var userInfo = com.example.tinybooking.dao.UserInfo
-            userInfo.bulk {
-                userTinyId = 123456
-                userDisplayName = user!!.displayName!!
-                userEmail = user.email!!
-                userId = user.uid
-                userPhotoUrl = user.photoUrl!!.toString()
+        var userInfo = com.example.tinybooking.dao.UserInfo
+        userInfo.bulk {
+            userTinyId = 123456
+            userDisplayName = user!!.displayName!!
+            userEmail = user.email!!
+            userId = user.uid
+            userPhotoUrl = user.photoUrl!!.toString()
 
-            }
         }
-        
+
 
     }
 

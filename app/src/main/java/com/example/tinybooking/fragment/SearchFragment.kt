@@ -23,7 +23,7 @@ import retrofit2.Response
  * Created by schecterza on 27/9/2017 AD.
  */
 
-class SearchFragment: Fragment() {
+class SearchFragment : Fragment() {
 
     lateinit var listStoreInfo: ListStoreInfo
 
@@ -39,6 +39,7 @@ class SearchFragment: Fragment() {
     }
 
     fun initInstances(rootView: View) {
+
         var toolbar = rootView.search_fragment_toolbar
         var activity = (activity as AppCompatActivity)
         activity.setSupportActionBar(rootView.search_fragment_toolbar)
@@ -51,7 +52,7 @@ class SearchFragment: Fragment() {
             activity.onBackPressed()
         }
 
-//        loadData()
+
 
         mRecyclerView = rootView.list_search_item
         mRecyclerView!!.setHasFixedSize(true)
@@ -59,11 +60,7 @@ class SearchFragment: Fragment() {
         mLayoutManager = LinearLayoutManager(context)
         mRecyclerView!!.layoutManager = mLayoutManager
 
-        mAdapter = SearchItemListAdapter()
-        mRecyclerView!!.adapter = mAdapter
-
-
-
+        loadData()
     }
 
     private fun loadData() {
@@ -74,8 +71,7 @@ class SearchFragment: Fragment() {
             override fun onResponse(call: Call<ListStoreInfo>?, response: Response<ListStoreInfo>?) {
                 if (response!!.isSuccessful) {
                     listStoreInfo = response.body()!!
-
-                    Toast.makeText(context, listStoreInfo.store[0].name, Toast.LENGTH_LONG).show()
+                    setRecyclerView(listStoreInfo)
                 }
             }
 
@@ -86,6 +82,11 @@ class SearchFragment: Fragment() {
         })
 
 
+    }
+
+    fun setRecyclerView(listStoreInfo: ListStoreInfo) {
+        mAdapter = SearchItemListAdapter(context, listStoreInfo)
+        mRecyclerView!!.adapter = mAdapter
     }
 
 

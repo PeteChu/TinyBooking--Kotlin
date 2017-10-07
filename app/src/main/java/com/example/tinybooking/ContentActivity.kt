@@ -15,8 +15,10 @@ class ContentActivity : AppCompatActivity() {
 
     fun initInstances() {
 
+        var intent = getIntent().extras
+
         supportFragmentManager.beginTransaction()
-                .add(R.id.content_container_content_activity, BookingFragment.newInstance())
+                .add(R.id.content_container_content_activity, BookingFragment.newInstance(intent))
                 .commit()
 
     }

@@ -15,12 +15,20 @@ interface ApiService {
     @GET("/store")
     fun listRepos(): Call<ListStoreInfo>
 
-    @POST("/test")
+    @POST("/getbook")
     @FormUrlEncoded
     fun testPost(@Field("sId") storeId: Int,
                  @Field("date") date: String,
                  @Field("numberHours") numberHours: Int,
                  @Field("openTime") openTime: Int,
                  @Field("closeTime") closeTime: Int): Call<AvailableTime>
+
+    @POST("/booking")
+    @FormUrlEncoded
+    fun bookField(@Field("uId") userId: Int,
+                  @Field("sId") fieldId: Int,
+                  @Field("date") date: String,
+                  @Field("numberHours") numberHours: Int,
+                  @Field("time") startItem: Int): Call<String>
 
 }

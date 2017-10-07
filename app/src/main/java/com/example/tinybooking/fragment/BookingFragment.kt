@@ -1,6 +1,7 @@
 package com.example.tinybooking.fragment
 
 import android.graphics.Color
+import android.graphics.Point
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
@@ -13,10 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.afollestad.materialdialogs.MaterialDialog
 import com.airbnb.android.airmapview.AirMapView
-import com.airbnb.android.airmapview.listeners.OnCameraChangeListener
-import com.airbnb.android.airmapview.listeners.OnCameraMoveListener
-import com.airbnb.android.airmapview.listeners.OnMapClickListener
-import com.airbnb.android.airmapview.listeners.OnMapInitializedListener
+import com.airbnb.android.airmapview.listeners.*
 import com.example.tinybooking.R
 import com.example.tinybooking.dao.AvailableTime
 import com.example.tinybooking.manager.HttpManager
@@ -28,6 +26,7 @@ import com.github.ksoichiro.android.observablescrollview.ScrollState
 import com.github.ksoichiro.android.observablescrollview.ScrollUtils
 import com.google.android.gms.maps.model.LatLng
 import com.shawnlin.numberpicker.NumberPicker
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_book_store.view.*
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormatter
@@ -40,7 +39,7 @@ import retrofit2.Response
  */
 
 class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickListener,
-        OnMapInitializedListener, OnCameraChangeListener, OnCameraMoveListener, DatePickerListener {
+        OnMapInitializedListener, DatePickerListener {
 
     lateinit var mToolbarView: Toolbar
     lateinit var mImageView: ImageView
@@ -54,10 +53,38 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
     lateinit var pickedDate: DateTime
     var numberHours: Int = 0
 
+    var fieldId: Int = 0
+    lateinit var fieldName: String
+    lateinit var fieldOpenTime: String
+    lateinit var fieldImage: String
+    lateinit var fieldTel: String
+    lateinit var fieldEmail: String
+    lateinit var fieldAddress: String
+
+    lateinit var imageViewField: ImageView
+    lateinit var textViewFieldName: TextView
+    lateinit var textViewOpenTime: TextView
+    lateinit var textViewTel: TextView
+    lateinit var textViewEmail: TextView
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_book_store, container, false)
         initInstances(rootView)
         return rootView
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        var fieldData = arguments.get("fieldData") as Bundle
+        fieldId = fieldData.get("fieldId") as Int
+        fieldName = fieldData.get("fieldName") as String
+        fieldOpenTime = fieldData.get("fieldOpenTime") as String
+        fieldImage = fieldData.get("fieldImage") as String
+        fieldTel = fieldData.get("fieldTel") as String
+        fieldEmail = fieldData.get("fieldEmail") as String
+        fieldAddress = fieldData.get("fieldAddress") as String
+
+        super.onCreate(savedInstanceState)
     }
 
     fun initInstances(rootView: View) {
@@ -68,8 +95,6 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
         actionBar.setDisplayHomeAsUpEnabled(true)
         actionBar.setDisplayShowHomeEnabled(true)
         actionBar.setDisplayShowTitleEnabled(false)
-
-        mImageView = rootView.image
 
 //        Initialize Toolbar
         mToolbarView = rootView.toolbar
@@ -87,8 +112,6 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
 //        Initialize MapView
         mMapView = rootView.map_view
         mMapView.setOnMapClickListener(this)
-        mMapView.setOnCameraChangeListener(this)
-        mMapView.setOnCameraMoveListener(this)
         mMapView.setOnMapInitializedListener(this)
         mMapView.initialize(childFragmentManager)
 
@@ -113,6 +136,22 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
         btnCheckAvailable = rootView.btn_check_available
         btnCheckAvailable.setOnClickListener(myOnClick)
 
+//        Initialize
+        imageViewField = rootView.imageView_field
+        Picasso.with(context).load(fieldImage).into(imageViewField)
+
+        textViewFieldName = rootView.textView_field_name
+        textViewFieldName.text = fieldName
+
+        textViewOpenTime = rootView.textView_open_time
+        textViewOpenTime.text = fieldOpenTime
+
+        textViewTel = rootView.textView_tel
+        textViewTel.text = fieldTel
+
+        textViewEmail = rootView.textView_email
+        textViewEmail.text = fieldEmail
+
     }
 
     var myOnClick = View.OnClickListener { v ->
@@ -125,27 +164,36 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
 
     private fun checkAvailableTime() {
 
-        var call = HttpManager.getInstance().getService().testPost(123456, pickedDate.toString("Y-MM-d"), numberHours, 10, 24)
+        var call = HttpManager.getInstance().getService().testPost(3, pickedDate.toString("Y-MM-d"), numberHours, 10, 24)
         call.enqueue(object : Callback<AvailableTime> {
             override fun onResponse(call: Call<AvailableTime>?, response: Response<AvailableTime>?) {
                 if (response!!.isSuccessful) {
                     var listAvailableTime = response.body()!!.availableTime
 
-                    MaterialDialog.Builder(context)
-                            .title("ช่วงเวลาที่ว่าง")
-                            .items(listAvailableTime)
-                            .itemsCallbackSingleChoice(-1, object : MaterialDialog.ListCallbackSingleChoice {
-                                override fun onSelection(dialog: MaterialDialog?, itemView: View?, which: Int, text: CharSequence?): Boolean {
-                                    fragmentManager.beginTransaction()
-                                            .replace(R.id.content_container_content_activity, ConfirmBookingFragment.newInstance())
-                                            .addToBackStack(null)
-                                            .commit()
-                                    return true
-                                }
-                            })
-                            .positiveText("ตกลง")
-                            .negativeText("ยกเลิก")
-                            .show()
+                    if (listAvailableTime.isNotEmpty()) {
+                        MaterialDialog.Builder(context)
+                                .title("ช่วงเวลาที่ว่าง")
+                                .items(listAvailableTime)
+                                .itemsCallbackSingleChoice(-1, object : MaterialDialog.ListCallbackSingleChoice {
+                                    override fun onSelection(dialog: MaterialDialog?, itemView: View?, which: Int, text: CharSequence?): Boolean {
+                                        fragmentManager.beginTransaction()
+                                                .replace(R.id.content_container_content_activity, ConfirmBookingFragment.newInstance(text.toString()))
+                                                .addToBackStack(null)
+                                                .commit()
+                                        return true
+                                    }
+                                })
+                                .positiveText("ตกลง")
+                                .negativeText("ยกเลิก")
+                                .show()
+                    } else {
+                        MaterialDialog.Builder(context)
+                                .title("ช่วงเวลาที่ว่าง")
+                                .content("ขออภัย ไม่มีช่วงเวลาที่ว่างในวันเวลาที่คุณต้องการ")
+                                .positiveText("ตกลง")
+                                .show()
+                    }
+
 
                 }
             }
@@ -185,15 +233,13 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
 
     override fun onMapClick(latLng: LatLng?) {
 
-    }
-
-    override fun onCameraChanged(latLng: LatLng?, zoom: Int) {
-
-    }
-
-    override fun onCameraMove() {
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_container_content_activity, ShowMapFragment.newInstance(latLng!!))
+                .addToBackStack(null)
+                .commit()
 
     }
+
 
     override fun onDateSelected(dateSelected: DateTime?) {
         Toast.makeText(context, dateSelected!!.toString(), Toast.LENGTH_SHORT).show()
@@ -201,9 +247,10 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
     }
 
     companion object {
-        fun newInstance(): BookingFragment {
+        fun newInstance(fieldData: Bundle): BookingFragment {
             var fragment = BookingFragment()
             var args = Bundle()
+            args.putBundle("fieldData", fieldData)
             fragment.arguments = args
             return fragment
         }

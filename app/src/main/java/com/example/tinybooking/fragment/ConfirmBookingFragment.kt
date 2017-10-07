@@ -6,8 +6,14 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.Toast
 import com.example.tinybooking.R
+import com.example.tinybooking.manager.HttpManager
 import kotlinx.android.synthetic.main.fragment_confirm_booking.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * Created by schecterza on 6/10/2017 AD.
@@ -15,6 +21,12 @@ import kotlinx.android.synthetic.main.fragment_confirm_booking.view.*
 
 class ConfirmBookingFragment : Fragment() {
 
+    lateinit var btnBack: LinearLayout
+    lateinit var btnSubmit: LinearLayout
+
+    lateinit var textViewFieldName: String
+    lateinit var textViewBookDate: String
+    lateinit var textViewBookTime: String
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_confirm_booking, container, false)
@@ -22,8 +34,19 @@ class ConfirmBookingFragment : Fragment() {
         return rootView
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        var args = arguments
+        textViewFieldName = args.getString("fieldName")
+        textViewBookDate = args.getString("bookDate")
+        textViewBookTime = args.getString("bookTime")
+
+        super.onCreate(savedInstanceState)
+    }
+
     fun initInstances(rootView: View) {
 
+//        Initialize toolbar
         var toolbar = rootView.confirm_fragment_toolbar
         var activity = (activity as AppCompatActivity)
         activity.setSupportActionBar(toolbar)
@@ -37,13 +60,52 @@ class ConfirmBookingFragment : Fragment() {
             activity.onBackPressed()
         }
 
+//        Initialize submit button
+        btnSubmit = rootView.btn_submit_confirm_fragment
+        btnSubmit.setOnClickListener(myOnClick)
+
+
+//        Initialize back button
+        btnBack = rootView.btn_back_confirm_fragment
+        btnBack.setOnClickListener(myOnClick)
+
+    }
+
+    var myOnClick = View.OnClickListener { v ->
+        when (v.id) {
+            R.id.btn_submit_confirm_fragment -> {
+                bookField()
+            }
+            R.id.btn_back_confirm_fragment -> {
+                fragmentManager.popBackStack()
+            }
+        }
+    }
+
+    fun bookField() {
+
+        Toast.makeText(context, "Book", Toast.LENGTH_SHORT).show()
+        var call = HttpManager.getInstance().getService().bookField(123456, 3, "2017-10-7", 2, 19)
+        call.enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>?, response: Response<String>?) {
+                if (response!!.isSuccessful) {
+                    Toast.makeText(context, response.body()!!.toString(), Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<String>?, t: Throwable?) {
+
+            }
+        })
+
 
     }
 
     companion object {
-        fun newInstance(): ConfirmBookingFragment {
+        fun newInstance(bookTime: String): ConfirmBookingFragment {
             var fragment = ConfirmBookingFragment()
             var args = Bundle()
+            args.putString("bookTime", bookTime)
             fragment.arguments = args
             return fragment
         }

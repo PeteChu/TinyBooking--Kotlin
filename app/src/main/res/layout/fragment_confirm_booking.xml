@@ -12,11 +12,11 @@
         android:minHeight="?attr/actionBarSize" />
 
     <LinearLayout
-        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,6 +30,7 @@
                 android:text="ชื่อสนาม" />
 
             <TextView
+                android:id="@+id/textview_selected_field_name"
                 style="@style/contentText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,6 +50,7 @@
                 android:text="วันที่จอง" />
 
             <TextView
+                android:id="@+id/textview_selected_date"
                 style="@style/contentText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -68,6 +70,7 @@
                 android:text="เวลา" />
 
             <TextView
+                android:id="@+id/textview_selected_time"
                 style="@style/contentText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -101,6 +104,7 @@
         android:background="@color/colorLine" />
 
     <LinearLayout
+        android:id="@+id/btn_back_confirm_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -108,7 +112,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -127,9 +132,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/btn_submit_confirm_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless">
 
             <TextView
                 style="@style/subHeadFont"

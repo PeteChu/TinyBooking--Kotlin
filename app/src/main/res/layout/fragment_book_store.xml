@@ -15,14 +15,13 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/image"
+                android:id="@+id/imageView_field"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/parallax_image_height"
                 android:scaleType="centerCrop"
                 android:src="@drawable/person" />
 
             <View
-                android:id="@+id/anchor"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/parallax_image_height"
                 android:minHeight="@dimen/parallax_image_height" />
@@ -30,7 +29,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/anchor"
+                android:layout_below="@id/imageView_field"
                 android:background="@android:color/white"
                 android:orientation="vertical">
 
@@ -44,11 +43,11 @@
                     android:paddingTop="@dimen/activity_vertical_margin">
 
                     <TextView
-                        android:id="@+id/poster"
+                        android:id="@+id/textView_field_name"
                         style="@style/subHeadFont"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/anchor"
+                        android:layout_below="@id/imageView_field"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="JK Football" />
@@ -65,10 +64,10 @@
                         android:text="เวลาเปิด - ปิด" />
 
                     <TextView
+                        android:id="@+id/textView_open_time"
                         style="@style/contentText"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="10.00 : 24.00" />
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         style="@style/subHeadFont"
@@ -77,10 +76,10 @@
                         android:text="โทร" />
 
                     <TextView
+                        android:id="@+id/textView_tel"
                         style="@style/contentText"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="089xxxxxxx" />
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         style="@style/subHeadFont"
@@ -89,10 +88,10 @@
                         android:text="E-mail" />
 
                     <TextView
+                        android:id="@+id/textView_email"
                         style="@style/contentText"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="jkfootball@hotmail.com" />
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         style="@style/subHeadFont"

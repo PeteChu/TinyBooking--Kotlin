@@ -14,8 +14,13 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import com.example.tinybooking.SearchActivity
 import com.example.tinybooking.adapter.FavoriteItemListAdapter
+import com.example.tinybooking.dao.ListStoreInfo
+import com.example.tinybooking.manager.HttpManager
 import kotlinx.android.synthetic.main.fragment_book_store.view.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 /**
@@ -41,18 +46,39 @@ class MainFragment : Fragment() {
         activity.setSupportActionBar(rootView.main_fragment_toolbar)
         setHasOptionsMenu(true)
 
-
         mRecyclerView = rootView.list_favorite_item
         mRecyclerView!!.setHasFixedSize(true)
 
         mLayoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
         mRecyclerView!!.layoutManager = mLayoutManager
 
-        mAdapter = FavoriteItemListAdapter()
-        mRecyclerView!!.adapter = mAdapter
+
 
         mSnapHelper = LinearSnapHelper()
         mSnapHelper!!.attachToRecyclerView(mRecyclerView)
+
+        loadData()
+
+    }
+
+    fun loadData() {
+
+        var call = HttpManager.getInstance().getService().listRepos()
+        call.enqueue(object : Callback<ListStoreInfo> {
+            override fun onResponse(call: Call<ListStoreInfo>?, response: Response<ListStoreInfo>?) {
+                if (response!!.isSuccessful) {
+                    var listStoreInfo = response.body()!!
+
+                    mAdapter = FavoriteItemListAdapter(context, listStoreInfo)
+                    mRecyclerView!!.adapter = mAdapter
+                }
+
+            }
+
+            override fun onFailure(call: Call<ListStoreInfo>?, t: Throwable?) {
+
+            }
+        })
 
     }
 
@@ -63,7 +89,7 @@ class MainFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
-        when(item!!.itemId) {
+        when (item!!.itemId) {
             R.id.action_search -> {
                 var intent = Intent(context, SearchActivity::class.java)
                 startActivity(intent)

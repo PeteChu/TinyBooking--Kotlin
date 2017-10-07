@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import com.chibatching.kotpref.Kotpref
 import com.example.tinybooking.R
+import com.example.tinybooking.dao.UserInfo
 import com.example.tinybooking.manager.HttpManager
 import kotlinx.android.synthetic.main.fragment_confirm_booking.view.*
 import retrofit2.Call
@@ -24,9 +26,12 @@ class ConfirmBookingFragment : Fragment() {
     lateinit var btnBack: LinearLayout
     lateinit var btnSubmit: LinearLayout
 
-    lateinit var textViewFieldName: String
-    lateinit var textViewBookDate: String
-    lateinit var textViewBookTime: String
+    var fieldId = 0
+    lateinit var fieldName: String
+    lateinit var bookDate: String
+    lateinit var bookTime: String
+
+    var userId: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_confirm_booking, container, false)
@@ -37,14 +42,20 @@ class ConfirmBookingFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         var args = arguments
-        textViewFieldName = args.getString("fieldName")
-        textViewBookDate = args.getString("bookDate")
-        textViewBookTime = args.getString("bookTime")
+        fieldId = args.getInt("fieldId")
+        fieldName = args.getString("fieldName")
+        bookDate = args.getString("bookDate")
+        bookTime = args.getString("bookTime")
 
         super.onCreate(savedInstanceState)
     }
 
     fun initInstances(rootView: View) {
+
+        Kotpref.init(context)
+
+        userId = UserInfo.userTinyId
+
 
 //        Initialize toolbar
         var toolbar = rootView.confirm_fragment_toolbar
@@ -69,6 +80,7 @@ class ConfirmBookingFragment : Fragment() {
         btnBack = rootView.btn_back_confirm_fragment
         btnBack.setOnClickListener(myOnClick)
 
+
     }
 
     var myOnClick = View.OnClickListener { v ->
@@ -85,7 +97,7 @@ class ConfirmBookingFragment : Fragment() {
     fun bookField() {
 
         Toast.makeText(context, "Book", Toast.LENGTH_SHORT).show()
-        var call = HttpManager.getInstance().getService().bookField(123456, 3, "2017-10-7", 2, 19)
+        var call = HttpManager.getInstance().getService().bookField(userId, fieldId, bookDate, 2, 19)
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>?, response: Response<String>?) {
                 if (response!!.isSuccessful) {
@@ -98,13 +110,15 @@ class ConfirmBookingFragment : Fragment() {
             }
         })
 
-
     }
 
     companion object {
-        fun newInstance(bookTime: String): ConfirmBookingFragment {
+        fun newInstance(fieldId: Int, fieldName: String, bookDate: String, bookTime: String): ConfirmBookingFragment {
             var fragment = ConfirmBookingFragment()
             var args = Bundle()
+            args.putInt("fieldId", fieldId)
+            args.putString("fieldName", fieldName)
+            args.putString("bookDate", bookDate)
             args.putString("bookTime", bookTime)
             fragment.arguments = args
             return fragment

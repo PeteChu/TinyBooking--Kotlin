@@ -163,7 +163,7 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
 
     private fun checkAvailableTime() {
 
-        var call = HttpManager.getInstance().getService().testPost(3, pickedDate.toString("Y-MM-d"), numberHours, 10, 24)
+        var call = HttpManager.getInstance().getService().testPost(fieldId, pickedDate.toString("Y-MM-d"), numberHours, getTime()[0].toInt(), getTime()[1].toInt())
         call.enqueue(object : Callback<AvailableTime> {
             override fun onResponse(call: Call<AvailableTime>?, response: Response<AvailableTime>?) {
                 if (response!!.isSuccessful) {
@@ -176,7 +176,8 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
                                 .itemsCallbackSingleChoice(-1, object : MaterialDialog.ListCallbackSingleChoice {
                                     override fun onSelection(dialog: MaterialDialog?, itemView: View?, which: Int, text: CharSequence?): Boolean {
                                         fragmentManager.beginTransaction()
-                                                .replace(R.id.content_container_content_activity, ConfirmBookingFragment.newInstance(fieldId, fieldName, pickedDate.toString("Y-MM-d"), text!!.toString()))
+                                                .replace(R.id.content_container_content_activity,
+                                                        ConfirmBookingFragment.newInstance(fieldId, fieldName, pickedDate.toString("Y-MM-d"), text!!.toString(), numberHours))
                                                 .addToBackStack(null)
                                                 .commit()
                                         return true
@@ -244,12 +245,12 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
         Toast.makeText(context, dateSelected!!.toString(), Toast.LENGTH_SHORT).show()
         pickedDate = dateSelected
     }
-    
-    fun getTime(time: String): Array<String> {
+
+    fun getTime(): Array<String> {
+        var time = fieldOpenTime
         var open = time.split("-")[0].split(".")[0]
         var close = time.split("-")[1].split(".")[0]
-        return arrayOf(open, close);
-
+        return arrayOf(open, close)
     }
 
     companion object {

@@ -83,6 +83,7 @@ class SignInFragment: Fragment(), GoogleApiClient.OnConnectionFailedListener {
         val currentUser = mAuth!!.getCurrentUser()
         updateUI(currentUser)
     }
+
     // [END on_start_check_user]
 
     // [START onactivityresult]
@@ -162,16 +163,19 @@ class SignInFragment: Fragment(), GoogleApiClient.OnConnectionFailedListener {
     }
 
     private fun updateUI(user: FirebaseUser?) {
-        var userInfo = com.example.tinybooking.dao.UserInfo
 
-        userInfo.bulk {
-            userTinyId = 123456
-            userDisplayName = user!!.displayName!!
-            userEmail = user.email!!
-            userId = user.uid
-            userPhotoUrl = user.photoUrl!!.toString()
+        if (user != null) {
+            var userInfo = com.example.tinybooking.dao.UserInfo
+            userInfo.bulk {
+                userTinyId = 123456
+                userDisplayName = user!!.displayName!!
+                userEmail = user.email!!
+                userId = user.uid
+                userPhotoUrl = user.photoUrl!!.toString()
 
+            }
         }
+        
 
     }
 

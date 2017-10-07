@@ -30,7 +30,7 @@
                 android:text="ชื่อสนาม" />
 
             <TextView
-                android:id="@+id/textview_selected_field_name"
+                android:id="@+id/textView_confirm_field_name"
                 style="@style/contentText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
                 android:text="วันที่จอง" />
 
             <TextView
-                android:id="@+id/textview_selected_date"
+                android:id="@+id/textView_confirm_date"
                 style="@style/contentText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                 android:text="เวลา" />
 
             <TextView
-                android:id="@+id/textview_selected_time"
+                android:id="@+id/textView_confirm_time"
                 style="@style/contentText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

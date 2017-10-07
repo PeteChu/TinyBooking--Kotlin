@@ -73,7 +73,6 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         var fieldData = arguments.get("fieldData") as Bundle
         fieldId = fieldData.get("fieldId") as Int
         fieldName = fieldData.get("fieldName") as String
@@ -193,7 +192,6 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
                                 .show()
                     }
 
-
                 }
             }
 
@@ -231,7 +229,6 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
     }
 
     override fun onMapClick(latLng: LatLng?) {
-
         fragmentManager.beginTransaction()
                 .replace(R.id.content_container_content_activity, ShowMapFragment.newInstance(latLng!!))
                 .addToBackStack(null)
@@ -239,13 +236,12 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
 
     }
 
-
     override fun onDateSelected(dateSelected: DateTime?) {
         pickedDate = dateSelected!!
     }
 
     fun getTime(): Array<String> {
-        var time = fieldOpenTime
+        var time = fieldOpenTime.replace(" ", "")
         var open = time.split("-")[0].split(".")[0]
         var close = time.split("-")[1].split(".")[0]
         return arrayOf(open, close)

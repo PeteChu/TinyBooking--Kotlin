@@ -12,9 +12,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import com.chibatching.kotpref.Kotpref
 import com.example.tinybooking.R
 import com.example.tinybooking.adapter.BookItemList
 import com.example.tinybooking.dao.ListMyBook
+import com.example.tinybooking.dao.UserInfo
 import com.example.tinybooking.manager.HttpManager
 import kotlinx.android.synthetic.main.fragment_book.view.*
 import retrofit2.Call
@@ -37,6 +39,9 @@ class MyBookingFragment : Fragment() {
     }
 
     fun initInstances(rootView: View) {
+
+        Kotpref.init(context)
+
         var activity = (activity as AppCompatActivity)
         activity.setSupportActionBar(rootView.book_fragment_toolbar)
         var actionBar = activity.supportActionBar!!
@@ -58,7 +63,7 @@ class MyBookingFragment : Fragment() {
     }
 
     fun loadData() {
-        var call = HttpManager.getInstance().getService().myBook(123456)
+        var call = HttpManager.getInstance().getService().myBook(UserInfo.userTinyId)
         call.enqueue(object : Callback<ListMyBook> {
             override fun onResponse(call: Call<ListMyBook>?, response: Response<ListMyBook>?) {
                 if (response!!.isSuccessful) {

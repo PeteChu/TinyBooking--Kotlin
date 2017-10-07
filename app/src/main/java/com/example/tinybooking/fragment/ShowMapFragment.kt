@@ -1,5 +1,6 @@
 package com.example.tinybooking.fragment
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -19,6 +20,9 @@ import kotlinx.android.synthetic.main.fragment_map.view.*
 class ShowMapFragment : Fragment(), OnMapInitializedListener {
 
     lateinit var mMapView: AirMapView
+    var mLat: Double = 0.0
+    var mLng: Double = 0.0
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_map, container, false)
@@ -26,10 +30,11 @@ class ShowMapFragment : Fragment(), OnMapInitializedListener {
         return rootView
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        var location = ShowMapFragment().arguments["latlng"]
+    override fun onCreate(savedInstanceState: Bundle?) {
+        mLat = arguments.getDouble("lat")
+        mLng = arguments.getDouble("lng")
 
-        Toast.makeText(context, location.toString(), Toast.LENGTH_SHORT).show()
+        super.onCreate(savedInstanceState)
     }
 
     fun initInstances(rootView: View) {
@@ -42,6 +47,10 @@ class ShowMapFragment : Fragment(), OnMapInitializedListener {
     }
 
     override fun onMapInitialized() {
+        var currentLocation = LatLng(mLat, mLng)
+        mMapView.animateCenterZoom(currentLocation, 15)
+        mMapView.drawCircle(currentLocation, 75, Color.parseColor("#79CCCD"), 5, Color.parseColor("#8079CCCD"))
+        mMapView.setMyLocationEnabled(false)
 
     }
 
@@ -49,7 +58,8 @@ class ShowMapFragment : Fragment(), OnMapInitializedListener {
         fun newInstance(latlng: LatLng): ShowMapFragment {
             var fragment = ShowMapFragment()
             var args = Bundle()
-            args.putString("latlng", latlng.toString())
+            args.putDouble("lat", latlng.latitude)
+            args.putDouble("lng", latlng.longitude)
             fragment.arguments = args
             return fragment
         }

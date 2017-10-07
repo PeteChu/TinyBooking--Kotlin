@@ -96,7 +96,6 @@ class ConfirmBookingFragment : Fragment() {
         textViewBookTime = rootView.textView_confirm_time
         textViewBookTime.text = bookTime
 
-
     }
 
     var myOnClick = View.OnClickListener { v ->
@@ -123,7 +122,7 @@ class ConfirmBookingFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<String>?, t: Throwable?) {
-
+                Toast.makeText(context, t.toString(), Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -134,7 +133,6 @@ class ConfirmBookingFragment : Fragment() {
         var close = time.split("-")[1].split(".")[0]
         return arrayOf(open, close)
     }
-
 
     companion object {
         fun newInstance(fieldId: Int, fieldName: String, bookDate: String, bookTime: String, numberHours: Int): ConfirmBookingFragment {

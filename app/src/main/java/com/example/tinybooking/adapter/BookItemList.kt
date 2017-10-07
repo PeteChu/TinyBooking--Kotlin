@@ -29,7 +29,7 @@ class BookItemList(context: Context, listMyBook: List<Book>) : RecyclerView.Adap
         holder!!.binData(mContext, mListMyBook, position)
     }
 
-    override fun getItemCount(): Int = 5
+    override fun getItemCount(): Int = mListMyBook.size
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var fieldImg = "http://innovationintelligence.com/wp-content/uploads/2017/07/players-shutterstock_604002233.jpg"
@@ -37,12 +37,17 @@ class BookItemList(context: Context, listMyBook: List<Book>) : RecyclerView.Adap
         fun binData(c: Context, listMyBook: List<Book>, position: Int) {
             var myBookData = listMyBook[position]
             Picasso.with(c).load(fieldImg).into(itemView.imageView_myBook_field)
-
-            itemView.setOnClickListener { onClick(itemView.context) }
-        }
-
-        fun onClick(c: Context) {
+            itemView.textView_myBook_book_date.text = seperateDateTime(myBookData.dateandtime)[0]
+            itemView.textView_myBook_book_time.text = seperateDateTime(myBookData.dateandtime)[1]
 
         }
+
+        fun seperateDateTime(dateAndTime: String): Array<String> {
+            var date = dateAndTime.split(" ")[0]
+            var time = dateAndTime.split(" ")[1]
+            return arrayOf(date, time)
+        }
+
     }
+
 }

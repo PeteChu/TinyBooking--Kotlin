@@ -38,7 +38,7 @@ class NotificationFragment : Fragment() {
         activity.setSupportActionBar(rootView.noti_fragment_toolbar)
         var actionBar = activity.supportActionBar!!
         actionBar.setDisplayShowTitleEnabled(true)
-        actionBar.setTitle("Notification")
+        actionBar.setTitle("Massage")
         rf = rootView.nofi_refresh
         list = rootView.noti_list
         list.layoutManager = LinearLayoutManager(context)

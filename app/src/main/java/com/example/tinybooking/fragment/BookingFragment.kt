@@ -88,7 +88,7 @@ class BookingFragment : Fragment(), ObservableScrollViewCallbacks, OnMapClickLis
     }
 
     fun initInstances(rootView: View) {
-        
+
         var activity = (activity as AppCompatActivity)
         activity.setSupportActionBar(rootView.toolbar)
         var actionBar = activity.supportActionBar!!

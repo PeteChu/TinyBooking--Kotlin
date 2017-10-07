@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
@@ -18,11 +19,12 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
+
                 <ImageView
+                    android:id="@+id/imageView_myBook_field"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:scaleType="fitXY"
@@ -37,19 +39,20 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:textColor="@color/blue"
+                    android:id="@+id/textView_myBook_field_name"
                     style="@style/subHeadFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="JK Football" />
+                    android:text="JK Football"
+                    android:textColor="@color/blue" />
 
                 <!-- Line divider setting button -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:background="@color/colorLine" />
 
                 <ScrollView
@@ -57,55 +60,63 @@
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
                         </LinearLayout>
-                        <LinearLayout
 
-                            android:orientation="vertical"
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
                             <TextView
                                 style="@style/subHeadFont"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Date " />
+
                             <TextView
-                                android:layout_marginLeft="10dp"
-                                android:textSize="18sp"
+                                android:id="@+id/textView_myBook_book_date"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Today" />
+                                android:layout_marginLeft="10dp"
+                                android:text="Today"
+                                android:textSize="18sp" />
                         </LinearLayout>
+
                         <LinearLayout
-                            android:layout_marginTop="10dp"
-                            android:orientation="vertical"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical">
+
                             <TextView
                                 style="@style/subHeadFont"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Time" />
+
                             <TextView
-                                android:layout_marginLeft="10dp"
-                                android:textSize="18sp"
+                                android:id="@+id/textView_myBook_book_time"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="10.00-11.00" />
+                                android:layout_marginLeft="10dp"
+                                android:text="10.00-11.00"
+                                android:textSize="18sp" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_marginTop="10dp"
-                            android:orientation="vertical"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical">
+
                             <TextView
                                 style="@style/subHeadFont"
                                 android:layout_width="wrap_content"
@@ -114,24 +125,15 @@
 
                             <Switch
                                 android:id="@+id/book_switch"
-                                android:layout_marginLeft="10dp"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp" />
 
                         </LinearLayout>
                     </LinearLayout>
                 </ScrollView>
-
-
-
-
             </LinearLayout>
-
-
         </LinearLayout>
-
-
     </android.support.v7.widget.CardView>
-
 
 </LinearLayout>

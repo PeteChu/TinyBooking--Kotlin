@@ -40,7 +40,7 @@ class SearchItemListAdapter(context: Context, listStoreInfo: ListStoreInfo) : Re
             var fieldData = data[position]
             Picasso.with(context).load(fieldData.image).into(itemView.imageView_field_thumbnail)
             itemView.textView_search_field_name.text = fieldData.name
-            itemView.textView_search_field_desc.text = fieldData.address
+            itemView.textView_search_field_desc.text = fieldData.opentime
             itemView.setOnClickListener { onClick(itemView.context, fieldData) }
 
         }
